@@ -16,6 +16,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Check Secret
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -n "$OPENAI_API_KEY" ]; then echo "Secret is set"; else echo "Secret is not set"; fi
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
