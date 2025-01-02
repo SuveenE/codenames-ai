@@ -1,101 +1,333 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect } from "react";
+import GameBoard from "@/components/GameBoard";
+import { Card, GameState, GameTurn } from "@/types/game";
+import { generateInitialGameState, delay } from "@/utils/gameUtils";
+import SpymasterView from "@/components/SpymasterView";
+import GameHistory from "@/components/GameHistory";
+import GameOver from "@/components/GameOver";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [gameState, setGameState] = useState<GameState | null>(null);
+  const [isProcessingTurn, setIsProcessingTurn] = useState(false);
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    setGameState(generateInitialGameState());
+  }, []);
+
+  // Update the auto-turn effect to check for isGameStarted
+  useEffect(() => {
+    if (!gameState || !isGameStarted || gameState.gameOver || isProcessingTurn)
+      return;
+
+    const playTurn = async () => {
+      setIsProcessingTurn(true);
+      await delay(1000);
+      await handleAITurn();
+      setIsProcessingTurn(false);
+    };
+
+    playTurn();
+  }, [
+    gameState?.currentTeam,
+    gameState?.gameOver,
+    isProcessingTurn,
+    isGameStarted,
+  ]);
+
+  async function handleAITurn() {
+    if (!gameState || gameState.gameOver) return;
+
+    // Get clue from AI Spymaster
+    const clueResponse = await fetch("/api/gpt", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        role: "CLUE_GIVER",
+        gameState,
+      }),
+    });
+
+    const clueData = await clueResponse.json();
+    const [clueWord, clueNumber] = clueData.response.split(" ");
+
+    const currentTurn: GameTurn = {
+      team: gameState.currentTeam,
+      clue: {
+        word: clueWord,
+        number: parseInt(clueNumber),
+      },
+      guesses: [],
+    };
+
+    // Update game state with the new clue
+    setGameState((prev) => ({
+      ...prev!,
+      lastClue: currentTurn.clue,
+      history: [...prev!.history, currentTurn],
+    }));
+
+    // Add delay to show the clue before guesses
+    await delay(1500);
+
+    // Get guesses from AI Guesser
+    const guessResponse = await fetch("/api/gpt", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        role: "GUESSER",
+        gameState: {
+          ...gameState,
+          lastClue: currentTurn.clue,
+        },
+      }),
+    });
+
+    const guessData = await guessResponse.json();
+    const guesses = guessData.response.split("\n");
+
+    let correctGuesses = 0;
+    const maxGuesses = currentTurn.clue.number;
+
+    // Process each guess with delay
+    for (const guess of guesses) {
+      const trimmedGuess = guess.trim();
+      if (!trimmedGuess) continue;
+
+      const cardIndex = gameState.cards.findIndex(
+        (card) => card.word.toLowerCase() === trimmedGuess.toLowerCase(),
+      );
+
+      if (cardIndex !== -1) {
+        const card = gameState.cards[cardIndex];
+        if (card.revealed) continue;
+
+        const wasCorrect = card.type === gameState.currentTeam;
+        currentTurn.guesses.push({
+          word: trimmedGuess,
+          wasCorrect,
+        });
+
+        await delay(1000); // Add delay between guesses
+        handleCardClick(cardIndex);
+
+        if (wasCorrect) {
+          correctGuesses++;
+          if (correctGuesses >= maxGuesses) {
+            setGameState((prev) => ({
+              ...prev!,
+              history: prev!.history.map((turn, i) =>
+                i === prev!.history.length - 1 ? currentTurn : turn,
+              ),
+              currentTeam: prev!.currentTeam === "red" ? "blue" : "red",
+            }));
+            break;
+          }
+        } else {
+          break;
+        }
+      }
+    }
+  }
+
+  function handleCardClick(index: number) {
+    if (!gameState || gameState.cards[index].revealed || gameState.gameOver)
+      return;
+
+    setGameState((prev) => {
+      if (!prev) return prev;
+
+      const newCards = [...prev.cards];
+      newCards[index] = { ...newCards[index], revealed: true };
+
+      const cardType = newCards[index].type;
+      let gameOver = false;
+      let winner = prev.winner;
+      let newCurrentTeam = prev.currentTeam;
+
+      // Handle assassin card
+      if (cardType === "assassin") {
+        gameOver = true;
+        winner = prev.currentTeam === "red" ? "blue" : "red";
+      }
+      // Handle regular scoring
+      else {
+        const newRedScore = prev.redScore + (cardType === "red" ? 1 : 0);
+        const newBlueScore = prev.blueScore + (cardType === "blue" ? 1 : 0);
+
+        // Check for win conditions
+        if (newRedScore === 9) {
+          gameOver = true;
+          winner = "red";
+        } else if (newBlueScore === 8) {
+          gameOver = true;
+          winner = "blue";
+        }
+
+        // Switch turns if wrong card is picked
+        if (cardType !== prev.currentTeam) {
+          newCurrentTeam = prev.currentTeam === "red" ? "blue" : "red";
+        }
+
+        return {
+          ...prev,
+          cards: newCards,
+          redScore: newRedScore,
+          blueScore: newBlueScore,
+          currentTeam: newCurrentTeam,
+          gameOver,
+          winner,
+        };
+      }
+
+      // Return state for assassin case
+      return {
+        ...prev,
+        cards: newCards,
+        gameOver,
+        winner,
+      };
+    });
+  }
+
+  const handleStartGame = () => {
+    setIsGameStarted(true);
+  };
+
+  const handleNewGame = () => {
+    //setGameState(generateInitialGameState());
+    //setIsGameStarted(false);
+  };
+
+  if (!gameState) return <div>Loading...</div>;
+
+  return (
+    <main className="min-h-screen p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-8 flex items-center flex-row gap-8 justify-center">
+          <div className=" space-y-3">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tight">
+                Codenames AI
+              </h1>
+              <p className="text-gray-600 text-sm">
+                Watch AI teams compete against each other
+              </p>
+            </div>
+            <button
+              onClick={handleStartGame}
+              disabled={isGameStarted || gameState.gameOver}
+              className="inline-flex items-center justify-center rounded-full
+                         bg-gradient-to-r from-blue-600 to-indigo-600 
+                         px-4 py-2 text-sm font-semibold text-white shadow-sm 
+                         hover:from-blue-500 hover:to-indigo-500 
+                         focus-visible:outline focus-visible:outline-2 
+                         focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+                         transition-all duration-200 ease-in-out"
+            >
+              <span>Start Game</span>
+              <svg
+                className="ml-2 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z"
+                />
+              </svg>
+            </button>
+            <div className="flex items-center gap-8 text-lg font-medium">
+              <div className="flex items-center gap-4">
+                <p className="text-neutral-500 text-sm">Score:</p>
+                <div className="flex items-center gap-2">
+                  <span className="text-red-500 bg-red-100 rounded-full p-2">
+                    {gameState?.redScore ?? 0}/9
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-blue-500 bg-blue-100 rounded-full p-2">
+                    {gameState?.blueScore ?? 0}/8
+                  </span>
+                </div>
+              </div>
+              <div className="text-sm">
+                {isProcessingTurn ? (
+                  <div className="flex items-center gap-2 animate-pulse">
+                    <div
+                      className={`h-2 w-2 rounded-full ${gameState?.currentTeam === "red" ? "bg-red-500" : "bg-blue-500"}`}
+                    ></div>
+                    <span
+                      className={
+                        gameState?.currentTeam === "red"
+                          ? "text-red-500"
+                          : "text-blue-500"
+                      }
+                    >
+                      {gameState?.currentTeam === "red" ? "Red" : "Blue"} Team
+                      Thinking...
+                    </span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <div
+                      className={`h-2 w-2 rounded-full ${gameState?.currentTeam === "red" ? "bg-red-500" : "bg-blue-500"}`}
+                    ></div>
+                    <span
+                      className={
+                        gameState?.currentTeam === "red"
+                          ? "text-red-500"
+                          : "text-blue-500"
+                      }
+                    >
+                      {gameState?.currentTeam === "red" ? "Red" : "Blue"} Team's
+                      Turn
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <SpymasterView cards={gameState?.cards ?? []} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <div className="flex flex-row gap-8 justify-center">
+          <div
+            className={`flex justify-center w-fit transition-all duration-500 ease-in-out bg-gray-100 rounded-xl ${
+              isGameStarted ? "justify-start" : "justify-center"
+            }`}
+          >
+            <div
+              className={`transition-all duration-500 ease-in-out ${
+                isGameStarted ? "translate-x-0" : ""
+              }`}
+            >
+              <GameBoard
+                cards={gameState?.cards ?? []}
+                onCardClick={() => {}}
+                isSpymaster={false}
+              />
+            </div>
+            {isGameStarted && (
+              <div className="w-120 space-y-4 transition-all duration-500 ease-in-out animate-fade-in">
+                <GameHistory
+                  history={gameState?.history ?? []}
+                  winner={gameState?.winner ?? null}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
