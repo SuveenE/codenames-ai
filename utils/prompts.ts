@@ -17,36 +17,54 @@ export function generatePrompt(
 ): string {
   if (role === "CLUE_GIVER") {
     return `You are the ${gameState.currentTeam} team's Spymaster.
-    
-    Your words are: ${gameState.cards
-      .filter((card) => card.type === gameState.currentTeam && !card.revealed)
-      .map((card) => card.word)
-      .join(", ")}
-    
-    Opponent's words are: ${gameState.cards
-      .filter(
-        (card) =>
-          card.type !== gameState.currentTeam &&
-          card.type !== "neutral" &&
-          !card.revealed,
-      )
-      .map((card) => card.word)
-      .join(", ")}
-    
-    The assassin word is: ${gameState.cards.find((card) => card.type === "assassin")?.word}
-    
-    Provide a one-word clue and a number.`;
+      
+      Your words are: ${gameState.cards
+        .filter((card) => card.type === gameState.currentTeam && !card.revealed)
+        .map((card) => card.word)
+        .join(", ")}
+      
+      Opponent's words are: ${gameState.cards
+        .filter(
+          (card) =>
+            card.type !== gameState.currentTeam &&
+            card.type !== "neutral" &&
+            !card.revealed,
+        )
+        .map((card) => card.word)
+        .join(", ")}
+      
+      The assassin word is: ${gameState.cards.find((card) => card.type === "assassin")?.word}
+  
+      Previous turns:
+      ${gameState.history
+        ?.map(
+          (turn) =>
+            `${turn.team}: Clue "${turn.clue.word} ${turn.clue.number}" → Guesses: ${turn.guesses.map((g) => `${g.word}${g.wasCorrect ? "✓" : "✗"}`).join(", ")}`,
+        )
+        .join("\n    ")}
+      
+      Be creative and take calculated risks - it's better to give ambitious clues that could help win faster, even if there's some risk. Aim to connect multiple words whenever possible.
+      
+      Provide a one-word clue and a number.`;
   } else {
     return `You are guessing for the ${gameState.currentTeam} team.
-    
-    The clue is: ${gameState.lastClue?.word} ${gameState.lastClue?.number}
-    
-    Available words are: ${gameState.cards
-      .filter((card) => !card.revealed)
-      .map((card) => card.word)
-      .join(", ")}
-    
-    IMPORTANT: Order your guesses by confidence level, most confident first.
-    Provide up to ${gameState.lastClue?.number} guesses, one per line, starting with your most confident guess.`;
+      
+      The clue is: ${gameState.lastClue?.word} ${gameState.lastClue?.number}
+      
+      Available words are: ${gameState.cards
+        .filter((card) => !card.revealed)
+        .map((card) => card.word)
+        .join(", ")}
+  
+      Previous turns:
+      ${gameState.history
+        ?.map(
+          (turn) =>
+            `${turn.team}: Clue "${turn.clue.word} ${turn.clue.number}" → Guesses: ${turn.guesses.map((g) => `${g.word}${g.wasCorrect ? "✓" : "✗"}`).join(", ")}`,
+        )
+        .join("\n    ")}
+      
+      IMPORTANT: Order your guesses by confidence level, most confident first.
+      Provide up to ${gameState.lastClue?.number} guesses, one per line, starting with your most confident guess.`;
   }
 }

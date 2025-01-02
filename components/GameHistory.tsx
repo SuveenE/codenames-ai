@@ -65,9 +65,9 @@ export default function GameHistory({ history, winner }: GameHistoryProps) {
               </div>
             ))
           ) : (
-            <div className="bg-white rounded-lg p-3 shadow-sm w-fit">
+            <div className="bg-white rounded-xl p-3 shadow-sm w-fit">
               <div className="flex">
-                <div className="w-1.5 rounded mr-3 bg-red-500" />
+                <div className="w-max rounded mr-3 bg-red-500" />
                 <div className="text-neutral-500 italic"></div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function GameHistory({ history, winner }: GameHistoryProps) {
               </div>
             ))
           ) : (
-            <div className="bg-white rounded-lg p-3 shadow-sm w-fit">
+            <div className="bg-white rounded-xl p-3 shadow-sm w-fit">
               <div className="flex">
                 <div className="w-1.5 rounded mr-3 bg-blue-500" />
                 <div className="text-neutral-500 italic"></div>
