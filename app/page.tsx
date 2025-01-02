@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react";
 import GameBoard from "@/components/GameBoard";
-import { Card, GameState, GameTurn } from "@/types/game";
+import { GameState, GameTurn } from "@/types/game";
 import { generateInitialGameState, delay } from "@/utils/gameUtils";
 import SpymasterView from "@/components/SpymasterView";
 import GameHistory from "@/components/GameHistory";
-import GameOver from "@/components/GameOver";
 
 export default function Home() {
   const [gameState, setGameState] = useState<GameState | null>(null);
@@ -200,11 +199,6 @@ export default function Home() {
     setIsGameStarted(true);
   };
 
-  const handleNewGame = () => {
-    //setGameState(generateInitialGameState());
-    //setIsGameStarted(false);
-  };
-
   if (!gameState) return <div>Loading...</div>;
 
   return (
@@ -289,8 +283,8 @@ export default function Home() {
                           : "text-blue-500"
                       }
                     >
-                      {gameState?.currentTeam === "red" ? "Red" : "Blue"} Team's
-                      Turn
+                      {gameState?.currentTeam === "red" ? "Red" : "Blue"}{" "}
+                      Team&apos;s Turn
                     </span>
                   </div>
                 )}
