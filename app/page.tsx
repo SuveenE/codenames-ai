@@ -6,6 +6,7 @@ import { GameState, GameTurn } from "@/types/game";
 import { generateInitialGameState, delay } from "@/utils/gameUtils";
 import SpymasterView from "@/components/SpymasterView";
 import GameHistory from "@/components/GameHistory";
+import GitHubLink from "@/components/GitHubLink";
 
 export default function Home() {
   const [gameState, setGameState] = useState<GameState | null>(null);
@@ -203,7 +204,16 @@ export default function Home() {
 
   return (
     <main className="min-h-screen p-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="md:hidden min-h-screen flex items-center justify-center p-8">
+        <div className="text-center space-y-4">
+          <h1 className="text-2xl font-bold">Codenames AI</h1>
+          <p className="text-gray-600">
+            Please view this experience on a desktop browser for the best
+            experience.
+          </p>
+        </div>
+      </div>
+      <div className="hidden md:block max-w-7xl mx-auto">
         <div className="mb-8 flex items-center flex-row gap-8 justify-center">
           <div className=" space-y-3">
             <div className="space-y-2">
@@ -322,6 +332,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <GitHubLink />
     </main>
   );
 }
