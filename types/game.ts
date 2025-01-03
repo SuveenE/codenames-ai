@@ -31,3 +31,9 @@ export interface GameState {
   };
   history: GameTurn[];
 }
+
+export interface GameOptions {
+  words?: string[];
+  cardTypes?: CardType[];
+  isSpymaster?: boolean;
+}

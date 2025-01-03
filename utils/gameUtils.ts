@@ -1,13 +1,28 @@
-import { Card, GameState, CardType } from "@/types/game";
+import { Card, GameState, CardType, GameOptions } from "@/types/game";
 import { WORD_LIST } from "@/data/wordsList";
 
-export function generateInitialGameState(): GameState {
-  const shuffledWords = shuffleArray(WORD_LIST).slice(0, 25);
-  const cardTypes = generateCardTypes();
+export function generateInitialGameState(options: GameOptions = {}): GameState {
+  const { words, cardTypes: customCardTypes } = options;
 
-  const cards: Card[] = shuffledWords.map((word, index) => ({
+  let finalWords: string[];
+  let finalCardTypes: CardType[];
+
+  if (words && customCardTypes) {
+    // Use provided words and card types directly (no shuffling)
+    if (words.length !== 25 || customCardTypes.length !== 25) {
+      throw new Error("Must provide exactly 25 words and card types");
+    }
+    finalWords = words;
+    finalCardTypes = customCardTypes;
+  } else {
+    // Use default behavior with shuffling
+    finalWords = shuffleArray(WORD_LIST).slice(0, 25);
+    finalCardTypes = generateCardTypes();
+  }
+
+  const cards: Card[] = finalWords.map((word, index) => ({
     word,
-    type: cardTypes[index],
+    type: finalCardTypes[index],
     revealed: false,
   }));
 
