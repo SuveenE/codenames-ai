@@ -14,12 +14,6 @@ export default function Home() {
   const [isProcessingTurn, setIsProcessingTurn] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState<CardType>("red");
-  const [colorGrid, setColorGrid] = useState<CardType[]>(
-    Array(25).fill("neutral"),
-  );
-  const [wordGrid, setWordGrid] = useState<string[]>(Array(25).fill(""));
-  const [currentWordIndex, setCurrentWordIndex] = useState<number | null>(null);
 
   const handleCustomGame = (words: string[], cardTypes: CardType[]) => {
     setGameState(
@@ -217,30 +211,6 @@ export default function Home() {
 
   const handleStartGame = () => {
     setIsGameStarted(true);
-  };
-
-  const handleColorClick = (index: number) => {
-    setColorGrid((prev) => {
-      const newGrid = [...prev];
-      newGrid[index] = selectedColor;
-      return newGrid;
-    });
-  };
-
-  const handleWordInput = (word: string) => {
-    if (currentWordIndex === null) return;
-
-    setWordGrid((prev) => {
-      const newGrid = [...prev];
-      newGrid[currentWordIndex] = word;
-      return newGrid;
-    });
-
-    // Move to next empty cell
-    const nextEmptyIndex = wordGrid.findIndex(
-      (w, i) => i > currentWordIndex && !w,
-    );
-    setCurrentWordIndex(nextEmptyIndex === -1 ? null : nextEmptyIndex);
   };
 
   if (!gameState) return <div>Loading...</div>;
