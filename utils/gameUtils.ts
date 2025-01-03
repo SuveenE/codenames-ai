@@ -36,7 +36,7 @@ export function generateInitialGameState(options: GameOptions = {}): GameState {
   };
 }
 
-function generateCardTypes(): CardType[] {
+export function generateCardTypes(): CardType[] {
   const types: CardType[] = [
     ...Array(9).fill("red"),
     ...Array(8).fill("blue"),
@@ -57,4 +57,37 @@ function shuffleArray<T>(array: T[]): T[] {
 
 export function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export function saveGameToFile(gameState: GameState) {
+  // Create a formatted date string
+  const date = new Date();
+  const dateString = date.toISOString().split("T")[0];
+  const timeString = date.toTimeString().split(" ")[0].replace(/:/g, "-");
+
+  // Create the game summary
+  const gameSummary = {
+    date: `${dateString} ${timeString}`,
+    winner: gameState.winner,
+    finalScore: {
+      red: gameState.redScore,
+      blue: gameState.blueScore,
+    },
+    history: gameState.history,
+    cards: gameState.cards,
+  };
+
+  // Convert to JSON string with nice formatting
+  const gameData = JSON.stringify(gameSummary, null, 2);
+
+  // Create and trigger download
+  const blob = new Blob([gameData], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `codenames-game-${dateString}-${timeString}.json`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 }

@@ -3,26 +3,54 @@
 import { useState, useEffect } from "react";
 import GameBoard from "@/components/GameBoard";
 import { CardType, GameState, GameTurn } from "@/types/game";
-import { generateInitialGameState, delay } from "@/utils/gameUtils";
+import {
+  generateInitialGameState,
+  delay,
+  generateCardTypes,
+  saveGameToFile,
+} from "@/utils/gameUtils";
 import SpymasterView from "@/components/SpymasterView";
 import GameHistory from "@/components/GameHistory";
 import GitHubLink from "@/components/GitHubLink";
 import CustomGameDialog from "@/components/CustomGameDialog";
+import { WORD_LIST } from "@/data/wordsList";
 
 export default function Home() {
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [isProcessingTurn, setIsProcessingTurn] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [gameSetup, setGameSetup] = useState<{
+    words: string[];
+    cardTypes: CardType[];
+  } | null>(null);
 
   const handleCustomGame = (words: string[], cardTypes: CardType[]) => {
-    setGameState(
-      generateInitialGameState({
-        words,
-        cardTypes,
-      }),
-    );
+    setGameSetup({ words, cardTypes });
     setDialogOpen(false);
+  };
+
+  const handleStartGame = () => {
+    if (!gameSetup) {
+      const randomWords = [...WORD_LIST]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 25);
+      const randomTypes = generateCardTypes();
+
+      setGameState(
+        generateInitialGameState({
+          words: randomWords,
+          cardTypes: randomTypes,
+        }),
+      );
+    } else {
+      setGameState(
+        generateInitialGameState({
+          words: gameSetup.words,
+          cardTypes: gameSetup.cardTypes,
+        }),
+      );
+    }
     setIsGameStarted(true);
   };
 
@@ -188,7 +216,7 @@ export default function Home() {
           newCurrentTeam = prev.currentTeam === "red" ? "blue" : "red";
         }
 
-        return {
+        const newState = {
           ...prev,
           cards: newCards,
           redScore: newRedScore,
@@ -197,21 +225,31 @@ export default function Home() {
           gameOver,
           winner,
         };
+
+        // Save game if it's over
+        if (gameOver) {
+          saveGameToFile(newState);
+        }
+
+        return newState;
       }
 
       // Return state for assassin case
-      return {
+      const finalState = {
         ...prev,
         cards: newCards,
         gameOver,
         winner,
       };
+
+      // Save game if it's over (assassin case)
+      if (gameOver) {
+        saveGameToFile(finalState);
+      }
+
+      return finalState;
     });
   }
-
-  const handleStartGame = () => {
-    setIsGameStarted(true);
-  };
 
   if (!gameState) return <div>Loading...</div>;
 
@@ -237,59 +275,31 @@ export default function Home() {
                 Watch AI teams compete against each other
               </p>
             </div>
-            <div className="space-x-4">
-              <button
-                onClick={handleStartGame}
-                disabled={isGameStarted || gameState.gameOver}
-                className="inline-flex items-center justify-center rounded-full
-                         bg-gradient-to-r from-blue-600 to-indigo-600 
-                         px-4 py-2 text-sm font-semibold text-white shadow-sm 
-                         hover:from-blue-500 hover:to-indigo-500 
-                         focus-visible:outline focus-visible:outline-2 
-                         focus-visible:outline-offset-2 focus-visible:outline-indigo-600
-                         transition-all duration-200 ease-in-out"
-              >
-                <span>Start Game</span>
-                <svg
-                  className="ml-2 h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z"
-                  />
-                </svg>
-              </button>
-              <button
-                onClick={() => setDialogOpen(true)}
-                disabled={isGameStarted || gameState.gameOver}
-                className="inline-flex items-center justify-center rounded-full
-                     bg-gradient-to-r from-purple-600 to-pink-600 
-                     px-4 py-2 ml-3 text-sm font-semibold text-white shadow-sm 
-                     hover:from-purple-500 hover:to-pink-500 
-                     focus-visible:outline focus-visible:outline-2 
-                     focus-visible:outline-offset-2 focus-visible:outline-pink-600
-                     transition-all duration-200 ease-in-out"
-              >
-                <span>Custom Game</span>
-                <svg
-                  className="ml-2 h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
-                  />
-                </svg>
-              </button>
+            <div className="flex gap-4">
+              {!isGameStarted && (
+                <>
+                  <button
+                    onClick={() => setDialogOpen(true)}
+                    className="inline-flex items-center justify-center rounded-full
+                             bg-gradient-to-r from-indigo-600 to-blue-600 
+                             px-4 py-2 text-sm font-semibold text-white shadow-sm 
+                             hover:from-indigo-500 hover:to-blue-500
+                             transition-all duration-200"
+                  >
+                    Custom Game
+                  </button>
+                  <button
+                    onClick={handleStartGame}
+                    className="inline-flex items-center justify-center rounded-full
+                             bg-gradient-to-r from-purple-600 to-pink-600 
+                             px-4 py-2 text-sm font-semibold text-white shadow-sm 
+                             hover:from-purple-500 hover:to-pink-500
+                             transition-all duration-200"
+                  >
+                    Start Game
+                  </button>
+                </>
+              )}
             </div>
             <CustomGameDialog
               open={dialogOpen}
