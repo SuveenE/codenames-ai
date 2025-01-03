@@ -1,0 +1,346 @@
+{
+  "date": "2025-01-03 22-16-05",
+  "initialOptions": {
+    "words": [
+      "HALLOWEEN",
+      "MARK",
+      "BUTTER",
+      "RUG",
+      "QUAIL",
+      "COMPOUND",
+      "SCIENTIST",
+      "DONG",
+      "SKATEBOARD",
+      "EDUCATION",
+      "BERMUDA",
+      "FAT",
+      "SNOWBOARD",
+      "TOMBSTONE",
+      "ARMOR",
+      "BERRY",
+      "RAPUNZEL",
+      "BEACH",
+      "BEVERAGE",
+      "CENTER",
+      "JASMINE",
+      "GARGOYLE",
+      "GODZILLA",
+      "PEARL",
+      "SKELETON"
+    ],
+    "cardTypes": [
+      "blue",
+      "assassin",
+      "red",
+      "blue",
+      "red",
+      "blue",
+      "red",
+      "blue",
+      "blue",
+      "red",
+      "red",
+      "neutral",
+      "red",
+      "red",
+      "neutral",
+      "neutral",
+      "neutral",
+      "neutral",
+      "blue",
+      "red",
+      "red",
+      "neutral",
+      "blue",
+      "neutral",
+      "blue"
+    ]
+  },
+  "winner": "red",
+  "finalScore": {
+    "red": 9,
+    "blue": 6
+  },
+  "history": [
+    {
+      "team": "red",
+      "clue": {
+        "word": "POWDER",
+        "number": 3
+      },
+      "guesses": [
+        {
+          "word": "SNOWBOARD",
+          "wasCorrect": true
+        },
+        {
+          "word": "COMPOUND",
+          "wasCorrect": false
+        }
+      ]
+    },
+    {
+      "team": "blue",
+      "clue": {
+        "word": "MONSTER",
+        "number": 2
+      },
+      "guesses": [
+        {
+          "word": "GODZILLA",
+          "wasCorrect": true
+        },
+        {
+          "word": "GARGOYLE",
+          "wasCorrect": false
+        }
+      ]
+    },
+    {
+      "team": "red",
+      "clue": {
+        "word": "ISLAND",
+        "number": 2
+      },
+      "guesses": [
+        {
+          "word": "BERMUDA",
+          "wasCorrect": true
+        },
+        {
+          "word": "BEACH",
+          "wasCorrect": false
+        }
+      ]
+    },
+    {
+      "team": "blue",
+      "clue": {
+        "word": "HALLOWEEN",
+        "number": 3
+      },
+      "guesses": [
+        {
+          "word": "HALLOWEEN",
+          "wasCorrect": true
+        },
+        {
+          "word": "TOMBSTONE",
+          "wasCorrect": false
+        }
+      ]
+    },
+    {
+      "team": "red",
+      "clue": {
+        "word": "LEARNING",
+        "number": 3
+      },
+      "guesses": [
+        {
+          "word": "EDUCATION",
+          "wasCorrect": true
+        },
+        {
+          "word": "SCIENTIST",
+          "wasCorrect": true
+        },
+        {
+          "word": "CENTER",
+          "wasCorrect": true
+        }
+      ]
+    },
+    {
+      "team": "blue",
+      "clue": {
+        "word": "SPORTS",
+        "number": 2
+      },
+      "guesses": [
+        {
+          "word": "SKATEBOARD",
+          "wasCorrect": true
+        },
+        {
+          "word": "RUG",
+          "wasCorrect": true
+        }
+      ]
+    },
+    {
+      "team": "red",
+      "clue": {
+        "word": "BIRD",
+        "number": 2
+      },
+      "guesses": [
+        {
+          "word": "QUAIL",
+          "wasCorrect": true
+        },
+        {
+          "word": "JASMINE",
+          "wasCorrect": true
+        }
+      ]
+    },
+    {
+      "team": "blue",
+      "clue": {
+        "word": "BONE",
+        "number": 2
+      },
+      "guesses": [
+        {
+          "word": "SKELETON",
+          "wasCorrect": true
+        },
+        {
+          "word": "ARMOR",
+          "wasCorrect": false
+        }
+      ]
+    },
+    {
+      "team": "red",
+      "clue": {
+        "word": "SPREAD",
+        "number": 1
+      },
+      "guesses": [
+        {
+          "word": "BUTTER",
+          "wasCorrect": true
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "word": "HALLOWEEN",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "MARK",
+      "type": "assassin",
+      "revealed": false
+    },
+    {
+      "word": "BUTTER",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "RUG",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "QUAIL",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "COMPOUND",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "SCIENTIST",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "DONG",
+      "type": "blue",
+      "revealed": false
+    },
+    {
+      "word": "SKATEBOARD",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "EDUCATION",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "BERMUDA",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "FAT",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "SNOWBOARD",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "TOMBSTONE",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "ARMOR",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "BERRY",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "RAPUNZEL",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "BEACH",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "BEVERAGE",
+      "type": "blue",
+      "revealed": false
+    },
+    {
+      "word": "CENTER",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "JASMINE",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "GARGOYLE",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "GODZILLA",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "PEARL",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "SKELETON",
+      "type": "blue",
+      "revealed": true
+    }
+  ]
+}

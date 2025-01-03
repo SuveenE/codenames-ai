@@ -65,9 +65,13 @@ export function saveGameToFile(gameState: GameState) {
   const dateString = date.toISOString().split("T")[0];
   const timeString = date.toTimeString().split(" ")[0].replace(/:/g, "-");
 
-  // Create the game summary
+  // Create the game summary with initial options
   const gameSummary = {
     date: `${dateString} ${timeString}`,
+    initialOptions: {
+      words: gameState.cards.map((card) => card.word),
+      cardTypes: gameState.cards.map((card) => card.type),
+    },
     winner: gameState.winner,
     finalScore: {
       red: gameState.redScore,
@@ -80,6 +84,7 @@ export function saveGameToFile(gameState: GameState) {
   // Convert to JSON string with nice formatting
   const gameData = JSON.stringify(gameSummary, null, 2);
 
+  // Log the data to console for copying to a file
   // Create and trigger download
   const blob = new Blob([gameData], { type: "application/json" });
   const url = URL.createObjectURL(blob);
@@ -90,4 +95,7 @@ export function saveGameToFile(gameState: GameState) {
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
+
+  // You can copy this from the console and save it as a new file in your data directory
+  // For example: data/saved-games/game-2024-03-21.json
 }

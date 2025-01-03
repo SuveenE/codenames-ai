@@ -7,13 +7,13 @@ import {
   generateInitialGameState,
   delay,
   generateCardTypes,
-  saveGameToFile,
 } from "@/utils/gameUtils";
 import SpymasterView from "@/components/SpymasterView";
 import GameHistory from "@/components/GameHistory";
 import GitHubLink from "@/components/GitHubLink";
 import CustomGameDialog from "@/components/CustomGameDialog";
 import { WORD_LIST } from "@/data/wordsList";
+import testGame from "@/data/testGame.json";
 
 export default function Home() {
   const [gameState, setGameState] = useState<GameState | null>(null);
@@ -24,6 +24,8 @@ export default function Home() {
     words: string[];
     cardTypes: CardType[];
   } | null>(null);
+  const [isReplaying, setIsReplaying] = useState(false);
+  const [isReplayEnd, setIsReplayEnd] = useState(false);
 
   const handleCustomGame = (words: string[], cardTypes: CardType[]) => {
     setGameSetup({ words, cardTypes });
@@ -228,7 +230,7 @@ export default function Home() {
 
         // Save game if it's over
         if (gameOver) {
-          saveGameToFile(newState);
+          //saveGameToFile(newState);
         }
 
         return newState;
@@ -244,12 +246,119 @@ export default function Home() {
 
       // Save game if it's over (assassin case)
       if (gameOver) {
-        saveGameToFile(finalState);
+        //saveGameToFile(finalState);
       }
 
       return finalState;
     });
   }
+
+  const replayTestGame = async () => {
+    setIsReplaying(true);
+
+    // Initialize game with the saved initial state
+    setGameState({
+      cards: testGame.initialOptions.words.map((word, index) => ({
+        word,
+        type: testGame.initialOptions.cardTypes[index] as CardType,
+        revealed: false,
+      })),
+      currentTeam: "red",
+      redScore: 0,
+      blueScore: 0,
+      gameOver: false,
+      history: [],
+    });
+
+    await delay(2000); // Initial pause
+
+    // Replay each turn
+    for (const turn of testGame.history) {
+      // Show the clue and initialize empty guesses
+      setGameState((prev) => {
+        if (!prev) return prev;
+
+        const newTurn: GameTurn = {
+          team: turn.team as "red" | "blue",
+          clue: turn.clue,
+          guesses: [],
+        };
+
+        return {
+          ...prev,
+          currentTeam: turn.team as "red" | "blue",
+          lastClue: turn.clue,
+          history: [...prev.history, newTurn],
+        };
+      });
+
+      await delay(2000); // Pause after showing clue
+
+      // Process each guess
+      for (const guess of turn.guesses) {
+        const cardIndex = testGame.initialOptions.words.findIndex(
+          (word) => word.toLowerCase() === guess.word.toLowerCase(),
+        );
+
+        if (cardIndex !== -1) {
+          setGameState((prev) => {
+            if (!prev) return prev;
+
+            const newCards = [...prev.cards];
+            newCards[cardIndex] = { ...newCards[cardIndex], revealed: true };
+
+            const cardType = newCards[cardIndex].type;
+            const newRedScore = prev.redScore + (cardType === "red" ? 1 : 0);
+            const newBlueScore = prev.blueScore + (cardType === "blue" ? 1 : 0);
+
+            // Get the current turn and add this guess
+            const currentTurn = { ...prev.history[prev.history.length - 1] };
+            currentTurn.guesses = [...currentTurn.guesses, guess];
+
+            return {
+              ...prev,
+              cards: newCards,
+              redScore: newRedScore,
+              blueScore: newBlueScore,
+              currentTeam: !guess.wasCorrect
+                ? turn.team === "red"
+                  ? "blue"
+                  : "red"
+                : prev.currentTeam,
+              history: [...prev.history.slice(0, -1), currentTurn], // Replace the current turn with updated guesses
+            };
+          });
+
+          await delay(2000);
+        }
+      }
+
+      // Switch teams at end of turn
+      setGameState((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          currentTeam: prev.currentTeam === "red" ? "blue" : "red",
+          lastClue: undefined,
+        };
+      });
+
+      await delay(1000);
+    }
+
+    // Set final game state
+    setGameState((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        gameOver: true,
+        winner: testGame.winner as "red" | "blue",
+      };
+    });
+
+    setIsReplaying(false);
+    setIsReplayEnd(true);
+  };
 
   if (!gameState) return <div>Loading...</div>;
 
@@ -265,6 +374,19 @@ export default function Home() {
         </div>
       </div>
       <div className="hidden md:block max-w-7xl mx-auto">
+        <div className="relative">
+          <button
+            onClick={replayTestGame}
+            className="fixed right-4 top-4 inline-flex items-center justify-center rounded-xl
+                     bg-gradient-to-r from-indigo-600 to-blue-600 
+                     px-4 py-2 text-xs font-semibold text-white shadow-sm 
+                     hover:from-indigo-500 hover:to-blue-500
+                     transition-all duration-200"
+            disabled={isReplaying}
+          >
+            {isReplaying ? "Replaying..." : "Replay Test Game"}
+          </button>
+        </div>
         <div className="mb-8 flex items-center flex-row gap-8 justify-center">
           <div className=" space-y-3">
             <div className="space-y-2">
@@ -276,24 +398,24 @@ export default function Home() {
               </p>
             </div>
             <div className="flex gap-4">
-              {!isGameStarted && (
+              {!isGameStarted && !isReplaying && (
                 <>
                   <button
                     onClick={() => setDialogOpen(true)}
-                    className="inline-flex items-center justify-center rounded-full
+                    className="inline-flex items-center justify-center rounded-xl
                              bg-gradient-to-r from-indigo-600 to-blue-600 
                              px-4 py-2 text-sm font-semibold text-white shadow-sm 
                              hover:from-indigo-500 hover:to-blue-500
                              transition-all duration-200"
                   >
-                    Custom Game
+                    Custom
                   </button>
                   <button
                     onClick={handleStartGame}
-                    className="inline-flex items-center justify-center rounded-full
-                             bg-gradient-to-r from-purple-600 to-pink-600 
+                    className="inline-flex items-center justify-center rounded-xl
+                             bg-gradient-to-r from-indigo-600 to-blue-600 
                              px-4 py-2 text-sm font-semibold text-white shadow-sm 
-                             hover:from-purple-500 hover:to-pink-500
+                             hover:from-indigo-500 hover:to-blue-500
                              transition-all duration-200"
                   >
                     Start Game
@@ -363,12 +485,12 @@ export default function Home() {
         <div className="flex flex-row gap-8 justify-center">
           <div
             className={`flex justify-center w-fit transition-all duration-500 ease-in-out bg-gray-100 rounded-xl ${
-              isGameStarted ? "justify-start" : "justify-center"
+              isGameStarted || isReplaying ? "justify-start" : "justify-center"
             }`}
           >
             <div
               className={`transition-all duration-500 ease-in-out ${
-                isGameStarted ? "translate-x-0" : ""
+                isGameStarted || isReplaying ? "translate-x-0" : ""
               }`}
             >
               <GameBoard
@@ -377,7 +499,7 @@ export default function Home() {
                 isSpymaster={false}
               />
             </div>
-            {isGameStarted && (
+            {(isGameStarted || isReplaying || isReplayEnd) && (
               <div className="w-120 space-y-4 transition-all duration-500 ease-in-out animate-fade-in">
                 <GameHistory
                   history={gameState?.history ?? []}
