@@ -7,6 +7,7 @@ import {
   generateInitialGameState,
   delay,
   generateCardTypes,
+  saveGameToFile,
 } from "@/utils/gameUtils";
 import SpymasterView from "@/components/SpymasterView";
 import GameHistory from "@/components/GameHistory";
@@ -28,7 +29,19 @@ export default function Home() {
   const [isReplayEnd, setIsReplayEnd] = useState(false);
 
   const handleCustomGame = (words: string[], cardTypes: CardType[]) => {
+    // Save the setup
     setGameSetup({ words, cardTypes });
+
+    // Initialize the game state immediately
+    setGameState(
+      generateInitialGameState({
+        words,
+        cardTypes,
+      }),
+    );
+
+    // Start the game and close the dialog
+    setIsGameStarted(true);
     setDialogOpen(false);
   };
 
@@ -230,7 +243,7 @@ export default function Home() {
 
         // Save game if it's over
         if (gameOver) {
-          //saveGameToFile(newState);
+          saveGameToFile(newState);
         }
 
         return newState;
@@ -246,7 +259,7 @@ export default function Home() {
 
       // Save game if it's over (assassin case)
       if (gameOver) {
-        //saveGameToFile(finalState);
+        saveGameToFile(finalState);
       }
 
       return finalState;
