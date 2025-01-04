@@ -11,11 +11,13 @@ export interface GameTurn {
   clue: {
     word: string;
     number: number;
+    reasoning?: string;
   };
   guesses: {
     word: string;
     wasCorrect: boolean;
   }[];
+  guessesReasoning?: string;
 }
 
 export interface GameState {

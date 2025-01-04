@@ -108,26 +108,26 @@ export default function Home() {
       }),
     });
 
-    const clueData = await clueResponse.json();
-    const [clueWord, clueNumber] = clueData.response.split(" ");
-
+    const { response: clueData } = await clueResponse.json();
     const currentTurn: GameTurn = {
       team: gameState.currentTeam,
       clue: {
-        word: clueWord,
-        number: parseInt(clueNumber),
+        word: clueData.word,
+        number: clueData.number,
+        reasoning: clueData.reasoning,
       },
       guesses: [],
     };
 
-    // Update game state with the new clue
+    // Store the reasoning in a separate state if you want to use it later
+    console.log("Clue reasoning:", clueData.reasoning);
+
     setGameState((prev) => ({
       ...prev!,
       lastClue: currentTurn.clue,
       history: [...prev!.history, currentTurn],
     }));
 
-    // Add delay to show the clue before guesses
     await delay(1500);
 
     // Get guesses from AI Guesser
@@ -145,19 +145,19 @@ export default function Home() {
       }),
     });
 
-    const guessData = await guessResponse.json();
-    const guesses = guessData.response.split("\n");
-
+    const { response: guessData } = await guessResponse.json();
     let correctGuesses = 0;
     const maxGuesses = currentTurn.clue.number;
 
-    // Process each guess with delay
-    for (const guess of guesses) {
-      const trimmedGuess = guess.trim();
-      if (!trimmedGuess) continue;
+    setGameState((prev) => ({
+      ...prev!,
+      guessesReasoning: guessData.reasoning,
+    }));
 
+    // Process each guess with delay
+    for (const word of guessData.words) {
       const cardIndex = gameState.cards.findIndex(
-        (card) => card.word.toLowerCase() === trimmedGuess.toLowerCase(),
+        (card) => card.word.toLowerCase() === word.toLowerCase(),
       );
 
       if (cardIndex !== -1) {
@@ -166,11 +166,14 @@ export default function Home() {
 
         const wasCorrect = card.type === gameState.currentTeam;
         currentTurn.guesses.push({
-          word: trimmedGuess,
+          word,
           wasCorrect,
         });
 
-        await delay(1000); // Add delay between guesses
+        // Log the reasoning for this guess
+        console.log(`Guess reasoning for ${word}:`, guessData.reasoning);
+
+        await delay(1000);
         handleCardClick(cardIndex);
 
         if (wasCorrect) {
