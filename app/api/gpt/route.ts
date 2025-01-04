@@ -4,6 +4,7 @@ import { GameState } from "@/types/game";
 import { getSystemPrompt, generatePrompt } from "@/utils/prompts";
 import { ClueResponseSchema, GuessResponseSchema } from "@/types/requests";
 import { zodResponseFormat } from "openai/helpers/zod";
+import { delay } from "@/utils/gameUtils";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -20,7 +21,6 @@ export async function POST(request: Request) {
     }: { role: "CLUE_GIVER" | "GUESSER"; gameState: GameState } = body;
 
     const prompt = generatePrompt(role, gameState);
-    let lastError;
 
     for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
       try {
@@ -47,11 +47,11 @@ export async function POST(request: Request) {
           response: completion.choices[0].message.parsed,
         });
       } catch (error) {
-        lastError = error;
         console.error(
           `GPT API Error (attempt ${attempt + 1}/${MAX_RETRIES + 1}):`,
           error,
         );
+        await delay(1000);
         if (attempt === MAX_RETRIES) break;
       }
     }
