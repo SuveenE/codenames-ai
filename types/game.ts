@@ -2,7 +2,7 @@ export type CardType = "red" | "blue" | "neutral" | "assassin";
 
 export interface Card {
   word: string;
-  type: CardType;
+  type: "red" | "blue" | "neutral" | "assassin";
   revealed: boolean;
 }
 

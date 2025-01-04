@@ -21,6 +21,7 @@ export default function Home() {
   const [isProcessingTurn, setIsProcessingTurn] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isTurnEnded, setIsTurnEnded] = useState(true);
   const [gameSetup, setGameSetup] = useState<{
     words: string[];
     cardTypes: CardType[];
@@ -96,102 +97,106 @@ export default function Home() {
   async function handleAITurn() {
     if (!gameState || gameState.gameOver) return;
 
-    // Get clue from AI Spymaster
-    const clueResponse = await fetch("/api/gpt", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        role: "CLUE_GIVER",
-        gameState,
-      }),
-    });
+    // If no lastClue, get a new clue
+    if (isTurnEnded) {
+      setIsTurnEnded(false);
+      const clueResponse = await fetch("/api/gpt", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ role: "CLUE_GIVER", gameState }),
+      });
 
-    const { response: clueData } = await clueResponse.json();
-    const currentTurn: GameTurn = {
-      team: gameState.currentTeam,
-      clue: {
-        word: clueData.word,
-        number: clueData.number,
-        reasoning: clueData.reasoning,
-      },
-      guesses: [],
-    };
-
-    // Store the reasoning in a separate state if you want to use it later
-    console.log("Clue reasoning:", clueData.reasoning);
-
-    setGameState((prev) => ({
-      ...prev!,
-      lastClue: currentTurn.clue,
-      history: [...prev!.history, currentTurn],
-    }));
-
-    await delay(1500);
-
-    // Get guesses from AI Guesser
-    const guessResponse = await fetch("/api/gpt", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        role: "GUESSER",
-        gameState: {
-          ...gameState,
-          lastClue: currentTurn.clue,
+      const { response: clueData } = await clueResponse.json();
+      const currentTurn: GameTurn = {
+        team: gameState.currentTeam,
+        clue: {
+          word: clueData.word,
+          number: clueData.number,
+          reasoning: clueData.reasoning,
         },
-      }),
-    });
+        guesses: [],
+      };
 
-    const { response: guessData } = await guessResponse.json();
-    let correctGuesses = 0;
-    const maxGuesses = currentTurn.clue.number;
+      setGameState((prev) => ({
+        ...prev!,
+        lastClue: currentTurn.clue,
+        history: [...prev!.history, currentTurn],
+      }));
 
-    setGameState((prev) => ({
-      ...prev!,
-      guessesReasoning: guessData.reasoning,
-    }));
+      await delay(1500);
+      return;
+    }
 
-    // Process each guess with delay
-    for (const word of guessData.words) {
+    const currentTurn = gameState.history[gameState.history.length - 1];
+    const maxGuesses = gameState.lastClue?.number ?? 1;
+
+    // Make guesses up to maxGuesses times
+    for (let i = 0; i < maxGuesses; i++) {
+      // Skip if we've already made all guesses
+      if (currentTurn.guesses.length >= maxGuesses || isTurnEnded) break;
+
+      // Get next guess from AI
+      const guessResponse = await fetch("/api/gpt", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ role: "GUESSER", gameState }),
+      });
+
+      const { response: guessData } = await guessResponse.json();
+
+      // Handle skip (only allowed after at least one guess)
+      if (guessData.skip && currentTurn.guesses.length > 0) {
+        currentTurn.guesses.push({ word: "SKIP", wasCorrect: false });
+        setGameState((prev) => ({
+          ...prev!,
+          currentTeam: prev!.currentTeam === "red" ? "blue" : "red",
+          lastClue: undefined,
+          history: prev!.history.map((turn, i) =>
+            i === prev!.history.length - 1 ? currentTurn : turn,
+          ),
+        }));
+        return;
+      }
+
+      // Process the guess
       const cardIndex = gameState.cards.findIndex(
-        (card) => card.word.toLowerCase() === word.toLowerCase(),
+        (card) => card.word.toLowerCase() === guessData.words.toLowerCase(),
       );
 
       if (cardIndex !== -1) {
         const card = gameState.cards[cardIndex];
-        if (card.revealed) continue;
+        if (!card.revealed) {
+          const wasCorrect = card.type === gameState.currentTeam;
+          currentTurn.guesses.push({
+            word: guessData.words,
+            wasCorrect,
+          });
 
-        const wasCorrect = card.type === gameState.currentTeam;
-        currentTurn.guesses.push({
-          word,
-          wasCorrect,
-        });
+          await delay(1000);
+          handleCardClick(cardIndex);
 
-        // Log the reasoning for this guess
-        console.log(`Guess reasoning for ${word}:`, guessData.reasoning);
-
-        await delay(1000);
-        handleCardClick(cardIndex);
-
-        if (wasCorrect) {
-          correctGuesses++;
-          if (correctGuesses >= maxGuesses) {
-            setGameState((prev) => ({
-              ...prev!,
-              history: prev!.history.map((turn, i) =>
-                i === prev!.history.length - 1 ? currentTurn : turn,
-              ),
-              currentTeam: prev!.currentTeam === "red" ? "blue" : "red",
-            }));
-            break;
+          // If guess was wrong, end turn
+          if (!wasCorrect) {
+            setIsTurnEnded(true);
+            return;
           }
-        } else {
-          break;
         }
       }
+
+      await delay(1500); // Delay between guesses
+    }
+
+    // End turn after all guesses are made
+    if (currentTurn.guesses.length >= maxGuesses) {
+      setIsTurnEnded(true);
+      setGameState((prev) => ({
+        ...prev!,
+        currentTeam: prev!.currentTeam === "red" ? "blue" : "red",
+        lastClue: undefined,
+        history: prev!.history.map((turn, i) =>
+          i === prev!.history.length - 1 ? currentTurn : turn,
+        ),
+      }));
     }
   }
 

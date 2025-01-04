@@ -7,6 +7,7 @@ export const ClueResponseSchema = z.object({
 });
 
 export const GuessResponseSchema = z.object({
-  words: z.array(z.string()),
+  words: z.string(),
+  skip: z.boolean().optional(),
   reasoning: z.string().optional(),
 });
