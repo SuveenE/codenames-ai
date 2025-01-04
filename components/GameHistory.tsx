@@ -51,7 +51,9 @@ export default function GameHistory({ history, winner }: GameHistoryProps) {
                             className="flex items-center gap-1 text-neutral-600"
                           >
                             {guess.word}
-                            {guess.wasCorrect ? (
+                            {guess.word === "SKIP" ? (
+                              <span>⏭️</span>
+                            ) : guess.wasCorrect ? (
                               <span className="text-emerald-500">✓</span>
                             ) : (
                               <span className="text-red-500">✗</span>

@@ -131,7 +131,7 @@ export default function Home() {
     const maxGuesses = gameState.lastClue?.number ?? 1;
 
     // Make guesses up to maxGuesses times
-    for (let i = 0; i < maxGuesses; i++) {
+    for (let i = 0; i < maxGuesses + 1; i++) {
       // Skip if we've already made all guesses
       if (currentTurn.guesses.length >= maxGuesses || isTurnEnded) break;
 
