@@ -1,4 +1,4 @@
-# Codenames AI
+# Codenames AI (WIP)
 
 How good is AI in Codenames?
 
@@ -8,6 +8,12 @@ How good is AI in Codenames?
 
 - [Words used in the game](https://github.com/jacksun007/codenames/blob/main/codenames.txt)
 - [Codenames Website](https://www.codenamesgame.com/)
+
+## The story behind 
+
+During our lunch breaks, my colleagues and I have been enjoying games of Codenames. In one round, the clue giver faced the challenge of connecting "carrot" and "ray." At the end of the game, I asked ChatGPT for a suggestion, and it came up with "Orange"—a pretty clever clue! My own idea was "Laser."
+
+That got me thinking: how good could AI be at playing Codenames? So, I built this.
 
 ## Getting Started
 
