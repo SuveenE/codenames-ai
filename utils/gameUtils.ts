@@ -105,9 +105,7 @@ export function generateSampleGames(numGames: number = 10): GameState[] {
 
   for (let i = 0; i < numGames; i++) {
     // Shuffle and select 25 random words
-    const words = [...WORD_LIST]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 25);
+    const words = [...WORD_LIST].sort(() => Math.random() - 0.5).slice(0, 25);
 
     // Generate card types
     const cardTypes = generateCardTypes();
@@ -133,8 +131,8 @@ export function generateSampleGames(numGames: number = 10): GameState[] {
   const sampleGamesData = sampleGames.map((game, index) => ({
     id: `game-${index + 1}`,
     initialOptions: {
-      words: game.cards.map(card => card.word),
-      cardTypes: game.cards.map(card => card.type),
+      words: game.cards.map((card) => card.word),
+      cardTypes: game.cards.map((card) => card.type),
     },
     cards: game.cards,
     currentTeam: game.currentTeam,
@@ -146,7 +144,7 @@ export function generateSampleGames(numGames: number = 10): GameState[] {
 
   // Convert to JSON string with nice formatting
   const jsonData = JSON.stringify(sampleGamesData, null, 2);
-  
+
   // Create and trigger download
   const blob = new Blob([jsonData], { type: "application/json" });
   const url = URL.createObjectURL(blob);

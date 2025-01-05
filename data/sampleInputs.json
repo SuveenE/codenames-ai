@@ -1,1912 +1,1912 @@
 [
-    {
-        "id": "game-1",
-        "initialOptions": {
-            "words": [
-                "UNIVERSITY",
-                "MAMMOTH",
-                "DOG",
-                "HOOD",
-                "BACK",
-                "HIDE",
-                "ALIEN",
-                "TEXAS",
-                "BEAR",
-                "AMERICA",
-                "SWAMP",
-                "EARTH",
-                "STRING",
-                "HOUSE",
-                "MUMMY",
-                "KICK",
-                "SUN",
-                "GAME",
-                "BOMB",
-                "CROWN",
-                "BIKINI",
-                "PIZZA",
-                "FIRE",
-                "JELLYFISH",
-                "HORSE"
-            ],
-            "cardTypes": [
-                "red",
-                "neutral",
-                "red",
-                "blue",
-                "blue",
-                "neutral",
-                "blue",
-                "neutral",
-                "neutral",
-                "red",
-                "neutral",
-                "red",
-                "neutral",
-                "blue",
-                "assassin",
-                "red",
-                "red",
-                "blue",
-                "blue",
-                "neutral",
-                "blue",
-                "red",
-                "red",
-                "blue",
-                "red"
-            ]
-        },
-        "cards": [
-            {
-                "word": "UNIVERSITY",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "MAMMOTH",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "DOG",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "HOOD",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "BACK",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "HIDE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "ALIEN",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "TEXAS",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "BEAR",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "AMERICA",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SWAMP",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "EARTH",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "STRING",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "HOUSE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "MUMMY",
-                "type": "assassin",
-                "revealed": false
-            },
-            {
-                "word": "KICK",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SUN",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "GAME",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "BOMB",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "CROWN",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "BIKINI",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "PIZZA",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "FIRE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "JELLYFISH",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "HORSE",
-                "type": "red",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+  {
+    "id": "game-1",
+    "initialOptions": {
+      "words": [
+        "UNIVERSITY",
+        "MAMMOTH",
+        "DOG",
+        "HOOD",
+        "BACK",
+        "HIDE",
+        "ALIEN",
+        "TEXAS",
+        "BEAR",
+        "AMERICA",
+        "SWAMP",
+        "EARTH",
+        "STRING",
+        "HOUSE",
+        "MUMMY",
+        "KICK",
+        "SUN",
+        "GAME",
+        "BOMB",
+        "CROWN",
+        "BIKINI",
+        "PIZZA",
+        "FIRE",
+        "JELLYFISH",
+        "HORSE"
+      ],
+      "cardTypes": [
+        "red",
+        "neutral",
+        "red",
+        "blue",
+        "blue",
+        "neutral",
+        "blue",
+        "neutral",
+        "neutral",
+        "red",
+        "neutral",
+        "red",
+        "neutral",
+        "blue",
+        "assassin",
+        "red",
+        "red",
+        "blue",
+        "blue",
+        "neutral",
+        "blue",
+        "red",
+        "red",
+        "blue",
+        "red"
+      ]
     },
-    {
-        "id": "game-2",
-        "initialOptions": {
-            "words": [
-                "MONA LISA",
-                "FIGURE",
-                "PRICK",
-                "BLOCK",
-                "AMERICA",
-                "AGENT",
-                "AFRICA",
-                "SHARK",
-                "SPOT",
-                "LINK",
-                "STAR",
-                "AIR",
-                "BATTERY",
-                "ALIEN",
-                "LASER",
-                "RANCH",
-                "VIKING",
-                "RING",
-                "SUMO",
-                "CHERRY",
-                "BOOT",
-                "CONE",
-                "LINE",
-                "ASTRONAUT",
-                "BRIDGE"
-            ],
-            "cardTypes": [
-                "neutral",
-                "red",
-                "neutral",
-                "neutral",
-                "neutral",
-                "blue",
-                "blue",
-                "neutral",
-                "red",
-                "neutral",
-                "red",
-                "blue",
-                "red",
-                "red",
-                "blue",
-                "blue",
-                "red",
-                "red",
-                "blue",
-                "blue",
-                "red",
-                "neutral",
-                "red",
-                "assassin",
-                "blue"
-            ]
-        },
-        "cards": [
-            {
-                "word": "MONA LISA",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "FIGURE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "PRICK",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "BLOCK",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "AMERICA",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "AGENT",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "AFRICA",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SHARK",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SPOT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "LINK",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "STAR",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "AIR",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "BATTERY",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "ALIEN",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "LASER",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "RANCH",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "VIKING",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "RING",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SUMO",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "CHERRY",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "BOOT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "CONE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "LINE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "ASTRONAUT",
-                "type": "assassin",
-                "revealed": false
-            },
-            {
-                "word": "BRIDGE",
-                "type": "blue",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+    "cards": [
+      {
+        "word": "UNIVERSITY",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "MAMMOTH",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "DOG",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "HOOD",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "BACK",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "HIDE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "ALIEN",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "TEXAS",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "BEAR",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "AMERICA",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SWAMP",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "EARTH",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "STRING",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "HOUSE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "MUMMY",
+        "type": "assassin",
+        "revealed": false
+      },
+      {
+        "word": "KICK",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SUN",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "GAME",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "BOMB",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "CROWN",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "BIKINI",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "PIZZA",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "FIRE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "JELLYFISH",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "HORSE",
+        "type": "red",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-2",
+    "initialOptions": {
+      "words": [
+        "MONA LISA",
+        "FIGURE",
+        "PRICK",
+        "BLOCK",
+        "AMERICA",
+        "AGENT",
+        "AFRICA",
+        "SHARK",
+        "SPOT",
+        "LINK",
+        "STAR",
+        "AIR",
+        "BATTERY",
+        "ALIEN",
+        "LASER",
+        "RANCH",
+        "VIKING",
+        "RING",
+        "SUMO",
+        "CHERRY",
+        "BOOT",
+        "CONE",
+        "LINE",
+        "ASTRONAUT",
+        "BRIDGE"
+      ],
+      "cardTypes": [
+        "neutral",
+        "red",
+        "neutral",
+        "neutral",
+        "neutral",
+        "blue",
+        "blue",
+        "neutral",
+        "red",
+        "neutral",
+        "red",
+        "blue",
+        "red",
+        "red",
+        "blue",
+        "blue",
+        "red",
+        "red",
+        "blue",
+        "blue",
+        "red",
+        "neutral",
+        "red",
+        "assassin",
+        "blue"
+      ]
     },
-    {
-        "id": "game-3",
-        "initialOptions": {
-            "words": [
-                "AFRICA",
-                "EXPLOSION",
-                "TEXAS",
-                "FIDDLE",
-                "STREET",
-                "MINE",
-                "PLOT",
-                "MINT",
-                "MILK",
-                "RANCH",
-                "NOVEL",
-                "COMET",
-                "TASTE",
-                "SNOWMAN",
-                "TROLL",
-                "POLISH",
-                "ANCHOR",
-                "TRAIN",
-                "KNIGHT",
-                "MOUSE",
-                "JACK",
-                "PEARL",
-                "STADIUM",
-                "MODEL",
-                "EINSTEIN"
-            ],
-            "cardTypes": [
-                "blue",
-                "neutral",
-                "blue",
-                "blue",
-                "red",
-                "blue",
-                "neutral",
-                "neutral",
-                "assassin",
-                "neutral",
-                "red",
-                "red",
-                "red",
-                "red",
-                "blue",
-                "red",
-                "red",
-                "neutral",
-                "red",
-                "blue",
-                "neutral",
-                "red",
-                "blue",
-                "blue",
-                "neutral"
-            ]
-        },
-        "cards": [
-            {
-                "word": "AFRICA",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "EXPLOSION",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "TEXAS",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "FIDDLE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "STREET",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "MINE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "PLOT",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "MINT",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "MILK",
-                "type": "assassin",
-                "revealed": false
-            },
-            {
-                "word": "RANCH",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "NOVEL",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "COMET",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "TASTE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SNOWMAN",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "TROLL",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "POLISH",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "ANCHOR",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "TRAIN",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "KNIGHT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "MOUSE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "JACK",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "PEARL",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "STADIUM",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "MODEL",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "EINSTEIN",
-                "type": "neutral",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+    "cards": [
+      {
+        "word": "MONA LISA",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "FIGURE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "PRICK",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "BLOCK",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "AMERICA",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "AGENT",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "AFRICA",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SHARK",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SPOT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "LINK",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "STAR",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "AIR",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "BATTERY",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "ALIEN",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "LASER",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "RANCH",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "VIKING",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "RING",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SUMO",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "CHERRY",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "BOOT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "CONE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "LINE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "ASTRONAUT",
+        "type": "assassin",
+        "revealed": false
+      },
+      {
+        "word": "BRIDGE",
+        "type": "blue",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-3",
+    "initialOptions": {
+      "words": [
+        "AFRICA",
+        "EXPLOSION",
+        "TEXAS",
+        "FIDDLE",
+        "STREET",
+        "MINE",
+        "PLOT",
+        "MINT",
+        "MILK",
+        "RANCH",
+        "NOVEL",
+        "COMET",
+        "TASTE",
+        "SNOWMAN",
+        "TROLL",
+        "POLISH",
+        "ANCHOR",
+        "TRAIN",
+        "KNIGHT",
+        "MOUSE",
+        "JACK",
+        "PEARL",
+        "STADIUM",
+        "MODEL",
+        "EINSTEIN"
+      ],
+      "cardTypes": [
+        "blue",
+        "neutral",
+        "blue",
+        "blue",
+        "red",
+        "blue",
+        "neutral",
+        "neutral",
+        "assassin",
+        "neutral",
+        "red",
+        "red",
+        "red",
+        "red",
+        "blue",
+        "red",
+        "red",
+        "neutral",
+        "red",
+        "blue",
+        "neutral",
+        "red",
+        "blue",
+        "blue",
+        "neutral"
+      ]
     },
-    {
-        "id": "game-4",
-        "initialOptions": {
-            "words": [
-                "MOAI",
-                "RUST",
-                "STATE",
-                "SHADOW",
-                "SINK",
-                "SQUARE",
-                "PIRATE",
-                "SEAL",
-                "PLOT",
-                "REVOLUTION",
-                "SHAKESPEARE",
-                "ICE",
-                "MOUSE",
-                "SOUND",
-                "MUG",
-                "PIANO",
-                "PORT",
-                "SCREEN",
-                "SLIP",
-                "SPELL",
-                "OLYMPUS",
-                "OCTOPUS",
-                "DICE",
-                "NOVEL",
-                "CLIFF"
-            ],
-            "cardTypes": [
-                "blue",
-                "blue",
-                "red",
-                "red",
-                "red",
-                "red",
-                "neutral",
-                "assassin",
-                "red",
-                "blue",
-                "red",
-                "red",
-                "blue",
-                "blue",
-                "red",
-                "neutral",
-                "neutral",
-                "neutral",
-                "neutral",
-                "blue",
-                "red",
-                "neutral",
-                "blue",
-                "neutral",
-                "blue"
-            ]
-        },
-        "cards": [
-            {
-                "word": "MOAI",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "RUST",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "STATE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SHADOW",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SINK",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SQUARE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "PIRATE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SEAL",
-                "type": "assassin",
-                "revealed": false
-            },
-            {
-                "word": "PLOT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "REVOLUTION",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SHAKESPEARE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "ICE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "MOUSE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SOUND",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "MUG",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "PIANO",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "PORT",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SCREEN",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SLIP",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SPELL",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "OLYMPUS",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "OCTOPUS",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "DICE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "NOVEL",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "CLIFF",
-                "type": "blue",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+    "cards": [
+      {
+        "word": "AFRICA",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "EXPLOSION",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "TEXAS",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "FIDDLE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "STREET",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "MINE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "PLOT",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "MINT",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "MILK",
+        "type": "assassin",
+        "revealed": false
+      },
+      {
+        "word": "RANCH",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "NOVEL",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "COMET",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "TASTE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SNOWMAN",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "TROLL",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "POLISH",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "ANCHOR",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "TRAIN",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "KNIGHT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "MOUSE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "JACK",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "PEARL",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "STADIUM",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "MODEL",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "EINSTEIN",
+        "type": "neutral",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-4",
+    "initialOptions": {
+      "words": [
+        "MOAI",
+        "RUST",
+        "STATE",
+        "SHADOW",
+        "SINK",
+        "SQUARE",
+        "PIRATE",
+        "SEAL",
+        "PLOT",
+        "REVOLUTION",
+        "SHAKESPEARE",
+        "ICE",
+        "MOUSE",
+        "SOUND",
+        "MUG",
+        "PIANO",
+        "PORT",
+        "SCREEN",
+        "SLIP",
+        "SPELL",
+        "OLYMPUS",
+        "OCTOPUS",
+        "DICE",
+        "NOVEL",
+        "CLIFF"
+      ],
+      "cardTypes": [
+        "blue",
+        "blue",
+        "red",
+        "red",
+        "red",
+        "red",
+        "neutral",
+        "assassin",
+        "red",
+        "blue",
+        "red",
+        "red",
+        "blue",
+        "blue",
+        "red",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "blue",
+        "red",
+        "neutral",
+        "blue",
+        "neutral",
+        "blue"
+      ]
     },
-    {
-        "id": "game-5",
-        "initialOptions": {
-            "words": [
-                "NET",
-                "WILL",
-                "SPY",
-                "GOLD",
-                "SPIDER",
-                "SINK",
-                "ARM",
-                "SQUARE",
-                "MOUSE",
-                "MOON",
-                "PENGUIN",
-                "SHADOW",
-                "DICE",
-                "SHARK",
-                "CONTRACT",
-                "RAZOR",
-                "BUTTON",
-                "ZOMBIE",
-                "KNOT",
-                "MASS",
-                "SWITCH",
-                "SWING",
-                "DAY",
-                "RICE",
-                "LINK"
-            ],
-            "cardTypes": [
-                "blue",
-                "red",
-                "red",
-                "neutral",
-                "neutral",
-                "blue",
-                "red",
-                "neutral",
-                "blue",
-                "blue",
-                "blue",
-                "neutral",
-                "blue",
-                "neutral",
-                "blue",
-                "red",
-                "red",
-                "red",
-                "red",
-                "neutral",
-                "red",
-                "blue",
-                "red",
-                "neutral",
-                "assassin"
-            ]
-        },
-        "cards": [
-            {
-                "word": "NET",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "WILL",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SPY",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "GOLD",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SPIDER",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SINK",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "ARM",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SQUARE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "MOUSE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "MOON",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "PENGUIN",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SHADOW",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "DICE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SHARK",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "CONTRACT",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "RAZOR",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "BUTTON",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "ZOMBIE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "KNOT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "MASS",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SWITCH",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SWING",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "DAY",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "RICE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "LINK",
-                "type": "assassin",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+    "cards": [
+      {
+        "word": "MOAI",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "RUST",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "STATE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SHADOW",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SINK",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SQUARE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "PIRATE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SEAL",
+        "type": "assassin",
+        "revealed": false
+      },
+      {
+        "word": "PLOT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "REVOLUTION",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SHAKESPEARE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "ICE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "MOUSE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SOUND",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "MUG",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "PIANO",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "PORT",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SCREEN",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SLIP",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SPELL",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "OLYMPUS",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "OCTOPUS",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "DICE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "NOVEL",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "CLIFF",
+        "type": "blue",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-5",
+    "initialOptions": {
+      "words": [
+        "NET",
+        "WILL",
+        "SPY",
+        "GOLD",
+        "SPIDER",
+        "SINK",
+        "ARM",
+        "SQUARE",
+        "MOUSE",
+        "MOON",
+        "PENGUIN",
+        "SHADOW",
+        "DICE",
+        "SHARK",
+        "CONTRACT",
+        "RAZOR",
+        "BUTTON",
+        "ZOMBIE",
+        "KNOT",
+        "MASS",
+        "SWITCH",
+        "SWING",
+        "DAY",
+        "RICE",
+        "LINK"
+      ],
+      "cardTypes": [
+        "blue",
+        "red",
+        "red",
+        "neutral",
+        "neutral",
+        "blue",
+        "red",
+        "neutral",
+        "blue",
+        "blue",
+        "blue",
+        "neutral",
+        "blue",
+        "neutral",
+        "blue",
+        "red",
+        "red",
+        "red",
+        "red",
+        "neutral",
+        "red",
+        "blue",
+        "red",
+        "neutral",
+        "assassin"
+      ]
     },
-    {
-        "id": "game-6",
-        "initialOptions": {
-            "words": [
-                "MOAI",
-                "CURSE",
-                "PEN",
-                "PARROT",
-                "BUNK",
-                "SQUIRREL",
-                "KILT",
-                "MARATHON",
-                "FIGURE",
-                "BUTTER",
-                "TUXEDO",
-                "DRUM",
-                "TABLET",
-                "HAMBURGER",
-                "BEARD",
-                "BUCK",
-                "AMBULANCE",
-                "STEAM",
-                "LADDER",
-                "ROLL",
-                "BRIDGE",
-                "BARBECUE",
-                "WHIP",
-                "CABLE",
-                "TORNADO"
-            ],
-            "cardTypes": [
-                "red",
-                "blue",
-                "neutral",
-                "red",
-                "neutral",
-                "blue",
-                "red",
-                "neutral",
-                "blue",
-                "red",
-                "red",
-                "neutral",
-                "assassin",
-                "neutral",
-                "neutral",
-                "blue",
-                "blue",
-                "blue",
-                "blue",
-                "red",
-                "neutral",
-                "red",
-                "red",
-                "red",
-                "blue"
-            ]
-        },
-        "cards": [
-            {
-                "word": "MOAI",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "CURSE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "PEN",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "PARROT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "BUNK",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SQUIRREL",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "KILT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "MARATHON",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "FIGURE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "BUTTER",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "TUXEDO",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "DRUM",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "TABLET",
-                "type": "assassin",
-                "revealed": false
-            },
-            {
-                "word": "HAMBURGER",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "BEARD",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "BUCK",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "AMBULANCE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "STEAM",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "LADDER",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "ROLL",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "BRIDGE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "BARBECUE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "WHIP",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "CABLE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "TORNADO",
-                "type": "blue",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+    "cards": [
+      {
+        "word": "NET",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "WILL",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SPY",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "GOLD",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SPIDER",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SINK",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "ARM",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SQUARE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "MOUSE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "MOON",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "PENGUIN",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SHADOW",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "DICE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SHARK",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "CONTRACT",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "RAZOR",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "BUTTON",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "ZOMBIE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "KNOT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "MASS",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SWITCH",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SWING",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "DAY",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "RICE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "LINK",
+        "type": "assassin",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-6",
+    "initialOptions": {
+      "words": [
+        "MOAI",
+        "CURSE",
+        "PEN",
+        "PARROT",
+        "BUNK",
+        "SQUIRREL",
+        "KILT",
+        "MARATHON",
+        "FIGURE",
+        "BUTTER",
+        "TUXEDO",
+        "DRUM",
+        "TABLET",
+        "HAMBURGER",
+        "BEARD",
+        "BUCK",
+        "AMBULANCE",
+        "STEAM",
+        "LADDER",
+        "ROLL",
+        "BRIDGE",
+        "BARBECUE",
+        "WHIP",
+        "CABLE",
+        "TORNADO"
+      ],
+      "cardTypes": [
+        "red",
+        "blue",
+        "neutral",
+        "red",
+        "neutral",
+        "blue",
+        "red",
+        "neutral",
+        "blue",
+        "red",
+        "red",
+        "neutral",
+        "assassin",
+        "neutral",
+        "neutral",
+        "blue",
+        "blue",
+        "blue",
+        "blue",
+        "red",
+        "neutral",
+        "red",
+        "red",
+        "red",
+        "blue"
+      ]
     },
-    {
-        "id": "game-7",
-        "initialOptions": {
-            "words": [
-                "RANCH",
-                "AZTEC",
-                "YETI",
-                "BURN",
-                "PERIOD",
-                "ICE",
-                "FIDDLE",
-                "STRATEGY",
-                "GUITAR",
-                "EAR",
-                "SLOTH",
-                "MUD",
-                "PILOT",
-                "SPEED",
-                "HOSE",
-                "TOUCH",
-                "BLOW",
-                "BAR",
-                "LACE",
-                "SOLSTICE",
-                "PAINT",
-                "CROW",
-                "KILT",
-                "SPIDER",
-                "SMOKE"
-            ],
-            "cardTypes": [
-                "red",
-                "blue",
-                "red",
-                "neutral",
-                "neutral",
-                "red",
-                "assassin",
-                "blue",
-                "red",
-                "neutral",
-                "neutral",
-                "red",
-                "neutral",
-                "red",
-                "neutral",
-                "blue",
-                "neutral",
-                "blue",
-                "blue",
-                "red",
-                "blue",
-                "blue",
-                "red",
-                "red",
-                "blue"
-            ]
-        },
-        "cards": [
-            {
-                "word": "RANCH",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "AZTEC",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "YETI",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "BURN",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "PERIOD",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "ICE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "FIDDLE",
-                "type": "assassin",
-                "revealed": false
-            },
-            {
-                "word": "STRATEGY",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "GUITAR",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "EAR",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SLOTH",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "MUD",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "PILOT",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SPEED",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "HOSE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "TOUCH",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "BLOW",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "BAR",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "LACE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SOLSTICE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "PAINT",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "CROW",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "KILT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SPIDER",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SMOKE",
-                "type": "blue",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+    "cards": [
+      {
+        "word": "MOAI",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "CURSE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "PEN",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "PARROT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "BUNK",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SQUIRREL",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "KILT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "MARATHON",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "FIGURE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "BUTTER",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "TUXEDO",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "DRUM",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "TABLET",
+        "type": "assassin",
+        "revealed": false
+      },
+      {
+        "word": "HAMBURGER",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "BEARD",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "BUCK",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "AMBULANCE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "STEAM",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "LADDER",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "ROLL",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "BRIDGE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "BARBECUE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "WHIP",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "CABLE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "TORNADO",
+        "type": "blue",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-7",
+    "initialOptions": {
+      "words": [
+        "RANCH",
+        "AZTEC",
+        "YETI",
+        "BURN",
+        "PERIOD",
+        "ICE",
+        "FIDDLE",
+        "STRATEGY",
+        "GUITAR",
+        "EAR",
+        "SLOTH",
+        "MUD",
+        "PILOT",
+        "SPEED",
+        "HOSE",
+        "TOUCH",
+        "BLOW",
+        "BAR",
+        "LACE",
+        "SOLSTICE",
+        "PAINT",
+        "CROW",
+        "KILT",
+        "SPIDER",
+        "SMOKE"
+      ],
+      "cardTypes": [
+        "red",
+        "blue",
+        "red",
+        "neutral",
+        "neutral",
+        "red",
+        "assassin",
+        "blue",
+        "red",
+        "neutral",
+        "neutral",
+        "red",
+        "neutral",
+        "red",
+        "neutral",
+        "blue",
+        "neutral",
+        "blue",
+        "blue",
+        "red",
+        "blue",
+        "blue",
+        "red",
+        "red",
+        "blue"
+      ]
     },
-    {
-        "id": "game-8",
-        "initialOptions": {
-            "words": [
-                "MODEL",
-                "LOTION",
-                "RICE",
-                "PRESS",
-                "POISON",
-                "PLANE",
-                "PYRAMID",
-                "LINE",
-                "RAY",
-                "MISSILE",
-                "KID",
-                "ROBOT",
-                "PISTOL",
-                "INDIA",
-                "RING",
-                "ORANGE",
-                "SQUARE",
-                "PANTS",
-                "POLE",
-                "SCIENTIST",
-                "SINK",
-                "JAM",
-                "OCTOPUS",
-                "HONEY",
-                "WITCH"
-            ],
-            "cardTypes": [
-                "red",
-                "blue",
-                "blue",
-                "blue",
-                "blue",
-                "red",
-                "red",
-                "red",
-                "neutral",
-                "neutral",
-                "blue",
-                "red",
-                "neutral",
-                "neutral",
-                "neutral",
-                "blue",
-                "neutral",
-                "red",
-                "blue",
-                "red",
-                "red",
-                "neutral",
-                "red",
-                "blue",
-                "assassin"
-            ]
-        },
-        "cards": [
-            {
-                "word": "MODEL",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "LOTION",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "RICE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "PRESS",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "POISON",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "PLANE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "PYRAMID",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "LINE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "RAY",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "MISSILE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "KID",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "ROBOT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "PISTOL",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "INDIA",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "RING",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "ORANGE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SQUARE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "PANTS",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "POLE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SCIENTIST",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SINK",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "JAM",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "OCTOPUS",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "HONEY",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "WITCH",
-                "type": "assassin",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+    "cards": [
+      {
+        "word": "RANCH",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "AZTEC",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "YETI",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "BURN",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "PERIOD",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "ICE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "FIDDLE",
+        "type": "assassin",
+        "revealed": false
+      },
+      {
+        "word": "STRATEGY",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "GUITAR",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "EAR",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SLOTH",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "MUD",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "PILOT",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SPEED",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "HOSE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "TOUCH",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "BLOW",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "BAR",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "LACE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SOLSTICE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "PAINT",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "CROW",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "KILT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SPIDER",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SMOKE",
+        "type": "blue",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-8",
+    "initialOptions": {
+      "words": [
+        "MODEL",
+        "LOTION",
+        "RICE",
+        "PRESS",
+        "POISON",
+        "PLANE",
+        "PYRAMID",
+        "LINE",
+        "RAY",
+        "MISSILE",
+        "KID",
+        "ROBOT",
+        "PISTOL",
+        "INDIA",
+        "RING",
+        "ORANGE",
+        "SQUARE",
+        "PANTS",
+        "POLE",
+        "SCIENTIST",
+        "SINK",
+        "JAM",
+        "OCTOPUS",
+        "HONEY",
+        "WITCH"
+      ],
+      "cardTypes": [
+        "red",
+        "blue",
+        "blue",
+        "blue",
+        "blue",
+        "red",
+        "red",
+        "red",
+        "neutral",
+        "neutral",
+        "blue",
+        "red",
+        "neutral",
+        "neutral",
+        "neutral",
+        "blue",
+        "neutral",
+        "red",
+        "blue",
+        "red",
+        "red",
+        "neutral",
+        "red",
+        "blue",
+        "assassin"
+      ]
     },
-    {
-        "id": "game-9",
-        "initialOptions": {
-            "words": [
-                "JUMPER",
-                "WEB",
-                "ZEUS",
-                "WATCH",
-                "TELESCOPE",
-                "SUB",
-                "WASHINGTON",
-                "VACUUM",
-                "TABLE",
-                "UNICORN",
-                "TOOTH",
-                "THIEF",
-                "SWITCH",
-                "WAR",
-                "TAG",
-                "STRIKE",
-                "RIVER",
-                "RICE",
-                "TAP",
-                "GAME",
-                "LEAD",
-                "VAN",
-                "SHIP",
-                "SPIDER",
-                "TORCH"
-            ],
-            "cardTypes": [
-                "neutral",
-                "red",
-                "blue",
-                "blue",
-                "blue",
-                "red",
-                "red",
-                "red",
-                "neutral",
-                "red",
-                "red",
-                "neutral",
-                "red",
-                "neutral",
-                "blue",
-                "neutral",
-                "assassin",
-                "neutral",
-                "blue",
-                "blue",
-                "red",
-                "red",
-                "neutral",
-                "blue",
-                "blue"
-            ]
-        },
-        "cards": [
-            {
-                "word": "JUMPER",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "WEB",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "ZEUS",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "WATCH",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "TELESCOPE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "SUB",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "WASHINGTON",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "VACUUM",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "TABLE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "UNICORN",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "TOOTH",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "THIEF",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SWITCH",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "WAR",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "TAG",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "STRIKE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "RIVER",
-                "type": "assassin",
-                "revealed": false
-            },
-            {
-                "word": "RICE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "TAP",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "GAME",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "LEAD",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "VAN",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "SHIP",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "SPIDER",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "TORCH",
-                "type": "blue",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
+    "cards": [
+      {
+        "word": "MODEL",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "LOTION",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "RICE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "PRESS",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "POISON",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "PLANE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "PYRAMID",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "LINE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "RAY",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "MISSILE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "KID",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "ROBOT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "PISTOL",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "INDIA",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "RING",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "ORANGE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SQUARE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "PANTS",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "POLE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SCIENTIST",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SINK",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "JAM",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "OCTOPUS",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "HONEY",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "WITCH",
+        "type": "assassin",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-9",
+    "initialOptions": {
+      "words": [
+        "JUMPER",
+        "WEB",
+        "ZEUS",
+        "WATCH",
+        "TELESCOPE",
+        "SUB",
+        "WASHINGTON",
+        "VACUUM",
+        "TABLE",
+        "UNICORN",
+        "TOOTH",
+        "THIEF",
+        "SWITCH",
+        "WAR",
+        "TAG",
+        "STRIKE",
+        "RIVER",
+        "RICE",
+        "TAP",
+        "GAME",
+        "LEAD",
+        "VAN",
+        "SHIP",
+        "SPIDER",
+        "TORCH"
+      ],
+      "cardTypes": [
+        "neutral",
+        "red",
+        "blue",
+        "blue",
+        "blue",
+        "red",
+        "red",
+        "red",
+        "neutral",
+        "red",
+        "red",
+        "neutral",
+        "red",
+        "neutral",
+        "blue",
+        "neutral",
+        "assassin",
+        "neutral",
+        "blue",
+        "blue",
+        "red",
+        "red",
+        "neutral",
+        "blue",
+        "blue"
+      ]
     },
-    {
-        "id": "game-10",
-        "initialOptions": {
-            "words": [
-                "GATE",
-                "GUM",
-                "DEATH",
-                "IRON",
-                "ROUND",
-                "ORGAN",
-                "JET",
-                "LONDON",
-                "MAIL",
-                "LAWYER",
-                "KING",
-                "LEMON",
-                "LIGHT",
-                "LION",
-                "LOCH NESS",
-                "LIFE",
-                "LOG",
-                "KANGAROO",
-                "MERCURY",
-                "LINE",
-                "JACK",
-                "LIMOUSINE",
-                "PLATYPUS",
-                "COPPER",
-                "CHURCH"
-            ],
-            "cardTypes": [
-                "neutral",
-                "assassin",
-                "neutral",
-                "red",
-                "blue",
-                "red",
-                "neutral",
-                "blue",
-                "blue",
-                "blue",
-                "neutral",
-                "neutral",
-                "red",
-                "blue",
-                "blue",
-                "red",
-                "blue",
-                "red",
-                "red",
-                "blue",
-                "neutral",
-                "red",
-                "red",
-                "neutral",
-                "red"
-            ]
-        },
-        "cards": [
-            {
-                "word": "GATE",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "GUM",
-                "type": "assassin",
-                "revealed": false
-            },
-            {
-                "word": "DEATH",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "IRON",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "ROUND",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "ORGAN",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "JET",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "LONDON",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "MAIL",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "LAWYER",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "KING",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "LEMON",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "LIGHT",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "LION",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "LOCH NESS",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "LIFE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "LOG",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "KANGAROO",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "MERCURY",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "LINE",
-                "type": "blue",
-                "revealed": false
-            },
-            {
-                "word": "JACK",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "LIMOUSINE",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "PLATYPUS",
-                "type": "red",
-                "revealed": false
-            },
-            {
-                "word": "COPPER",
-                "type": "neutral",
-                "revealed": false
-            },
-            {
-                "word": "CHURCH",
-                "type": "red",
-                "revealed": false
-            }
-        ],
-        "currentTeam": "red",
-        "redScore": 0,
-        "blueScore": 0,
-        "gameOver": false,
-        "history": []
-    }
+    "cards": [
+      {
+        "word": "JUMPER",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "WEB",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "ZEUS",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "WATCH",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "TELESCOPE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "SUB",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "WASHINGTON",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "VACUUM",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "TABLE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "UNICORN",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "TOOTH",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "THIEF",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SWITCH",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "WAR",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "TAG",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "STRIKE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "RIVER",
+        "type": "assassin",
+        "revealed": false
+      },
+      {
+        "word": "RICE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "TAP",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "GAME",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "LEAD",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "VAN",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "SHIP",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "SPIDER",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "TORCH",
+        "type": "blue",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  },
+  {
+    "id": "game-10",
+    "initialOptions": {
+      "words": [
+        "GATE",
+        "GUM",
+        "DEATH",
+        "IRON",
+        "ROUND",
+        "ORGAN",
+        "JET",
+        "LONDON",
+        "MAIL",
+        "LAWYER",
+        "KING",
+        "LEMON",
+        "LIGHT",
+        "LION",
+        "LOCH NESS",
+        "LIFE",
+        "LOG",
+        "KANGAROO",
+        "MERCURY",
+        "LINE",
+        "JACK",
+        "LIMOUSINE",
+        "PLATYPUS",
+        "COPPER",
+        "CHURCH"
+      ],
+      "cardTypes": [
+        "neutral",
+        "assassin",
+        "neutral",
+        "red",
+        "blue",
+        "red",
+        "neutral",
+        "blue",
+        "blue",
+        "blue",
+        "neutral",
+        "neutral",
+        "red",
+        "blue",
+        "blue",
+        "red",
+        "blue",
+        "red",
+        "red",
+        "blue",
+        "neutral",
+        "red",
+        "red",
+        "neutral",
+        "red"
+      ]
+    },
+    "cards": [
+      {
+        "word": "GATE",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "GUM",
+        "type": "assassin",
+        "revealed": false
+      },
+      {
+        "word": "DEATH",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "IRON",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "ROUND",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "ORGAN",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "JET",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "LONDON",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "MAIL",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "LAWYER",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "KING",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "LEMON",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "LIGHT",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "LION",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "LOCH NESS",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "LIFE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "LOG",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "KANGAROO",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "MERCURY",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "LINE",
+        "type": "blue",
+        "revealed": false
+      },
+      {
+        "word": "JACK",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "LIMOUSINE",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "PLATYPUS",
+        "type": "red",
+        "revealed": false
+      },
+      {
+        "word": "COPPER",
+        "type": "neutral",
+        "revealed": false
+      },
+      {
+        "word": "CHURCH",
+        "type": "red",
+        "revealed": false
+      }
+    ],
+    "currentTeam": "red",
+    "redScore": 0,
+    "blueScore": 0,
+    "gameOver": false,
+    "history": []
+  }
 ]
