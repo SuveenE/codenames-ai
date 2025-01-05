@@ -99,3 +99,64 @@ export function saveGameToFile(gameState: GameState) {
   // You can copy this from the console and save it as a new file in your data directory
   // For example: data/saved-games/game-2024-03-21.json
 }
+
+export function generateSampleGames(numGames: number = 10): GameState[] {
+  const sampleGames: GameState[] = [];
+
+  for (let i = 0; i < numGames; i++) {
+    // Shuffle and select 25 random words
+    const words = [...WORD_LIST]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 25);
+
+    // Generate card types
+    const cardTypes = generateCardTypes();
+
+    // Create initial game state
+    const gameState: GameState = {
+      cards: words.map((word, index) => ({
+        word,
+        type: cardTypes[index],
+        revealed: false,
+      })),
+      currentTeam: "red",
+      redScore: 0,
+      blueScore: 0,
+      gameOver: false,
+      history: [],
+    };
+
+    sampleGames.push(gameState);
+  }
+
+  // Save the sample games to a JSON file
+  const sampleGamesData = sampleGames.map((game, index) => ({
+    id: `game-${index + 1}`,
+    initialOptions: {
+      words: game.cards.map(card => card.word),
+      cardTypes: game.cards.map(card => card.type),
+    },
+    cards: game.cards,
+    currentTeam: game.currentTeam,
+    redScore: game.redScore,
+    blueScore: game.blueScore,
+    gameOver: game.gameOver,
+    history: game.history,
+  }));
+
+  // Convert to JSON string with nice formatting
+  const jsonData = JSON.stringify(sampleGamesData, null, 2);
+  
+  // Create and trigger download
+  const blob = new Blob([jsonData], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `codenames-sample-games.json`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+
+  return sampleGames;
+}
