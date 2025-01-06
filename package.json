@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^15.1.3",
     "@radix-ui/react-dialog": "^1.1.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
