@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { CardType } from "@/types/game";
 import { useState, useRef, KeyboardEvent } from "react";
+import sampleInputs from "@/data/sampleInputs.json";
 
 interface CustomGameDialogProps {
   open: boolean;
@@ -27,6 +28,14 @@ export default function CustomGameDialog({
   const [wordGrid, setWordGrid] = useState<string[]>(Array(25).fill(""));
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleLoadSample = (gameId: number) => {
+    const game = sampleInputs[gameId];
+    if (game) {
+      setWordGrid(game["initialOptions"]["words"]);
+      setColorGrid(game["initialOptions"]["cardTypes"] as CardType[]);
+    }
+  };
 
   const handleColorClick = (index: number) => {
     setColorGrid((prev) => {
@@ -100,7 +109,19 @@ export default function CustomGameDialog({
             Add a game of your own and see how AI plays it
           </DialogDescription>
         </DialogHeader>
-
+        <div className="grid grid-cols-5 gap-2 mb-6">
+          {[...Array(10)].map((_, i) => (
+            <button
+              key={i}
+              onClick={() => handleLoadSample(i)}
+              className="px-4 py-2 text-sm font-medium text-neutral-700
+                       bg-neutral-100 rounded-lg hover:bg-neutral-200
+                       transition-all duration-200"
+            >
+              Game {i + 1}
+            </button>
+          ))}
+        </div>
         <div className="grid gap-8">
           <div className="flex flex-row gap-4 justify-center items-start">
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-neutral-200">
