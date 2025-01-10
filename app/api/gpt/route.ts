@@ -5,10 +5,13 @@ import { getSystemPrompt, generatePrompt } from "@/utils/prompts";
 import { ClueResponseSchema, GuessResponseSchema } from "@/types/requests";
 import { zodResponseFormat } from "openai/helpers/zod";
 import { delay } from "@/utils/gameUtils";
+import { observeOpenAI } from "langfuse";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const openai = observeOpenAI(
+  new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  }),
+);
 
 const MAX_RETRIES = 2;
 
