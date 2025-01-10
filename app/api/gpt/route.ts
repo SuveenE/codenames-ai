@@ -5,7 +5,7 @@ import { getSystemPrompt, generatePrompt } from "@/utils/prompts";
 import { ClueResponseSchema, GuessResponseSchema } from "@/types/requests";
 import { zodResponseFormat } from "openai/helpers/zod";
 import { delay } from "@/utils/gameUtils";
-import { LangfuseParent, observeOpenAI } from "langfuse";
+import { observeOpenAI } from "langfuse";
 
 const MAX_RETRIES = 2;
 
