@@ -5,23 +5,43 @@ import { getSystemPrompt, generatePrompt } from "@/utils/prompts";
 import { ClueResponseSchema, GuessResponseSchema } from "@/types/requests";
 import { zodResponseFormat } from "openai/helpers/zod";
 import { delay } from "@/utils/gameUtils";
-import { observeOpenAI } from "langfuse";
-
-const openai = observeOpenAI(
-  new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  }),
-);
+import { LangfuseParent, observeOpenAI } from "langfuse";
 
 const MAX_RETRIES = 2;
+
+const createOpenAIClient = async (
+  role: "CLUE_GIVER" | "GUESSER",
+  sessionId: string,
+  gameState: GameState,
+) => {
+  return observeOpenAI(
+    new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    }),
+    {
+      generationName: role === "CLUE_GIVER" ? "clue giver" : "guesser",
+      metadata: {
+        currentTeam: gameState.currentTeam,
+      },
+      sessionId: sessionId,
+    },
+  );
+};
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const {
       role,
+      sessionId,
       gameState,
-    }: { role: "CLUE_GIVER" | "GUESSER"; gameState: GameState } = body;
+    }: {
+      role: "CLUE_GIVER" | "GUESSER";
+      sessionId: string;
+      gameState: GameState;
+    } = body;
+
+    const openai = await createOpenAIClient(role, sessionId, gameState);
 
     const prompt = generatePrompt(role, gameState);
 

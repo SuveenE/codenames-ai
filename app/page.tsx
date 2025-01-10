@@ -28,6 +28,12 @@ export default function Home() {
   } | null>(null);
   const [isReplaying, setIsReplaying] = useState(false);
   const [isReplayEnd, setIsReplayEnd] = useState(false);
+  const [sessionId, setSessionId] = useState<string>("");
+
+  useEffect(() => {
+    const uuid = crypto.randomUUID().slice(0, 6);
+    setSessionId(uuid);
+  }, []);
 
   const handleCustomGame = (words: string[], cardTypes: CardType[]) => {
     // Save the setup
@@ -103,7 +109,7 @@ export default function Home() {
       const clueResponse = await fetch("/api/gpt", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role: "CLUE_GIVER", gameState }),
+        body: JSON.stringify({ role: "CLUE_GIVER", sessionId, gameState }),
       });
 
       const { response: clueData } = await clueResponse.json();
@@ -139,7 +145,7 @@ export default function Home() {
       const guessResponse = await fetch("/api/gpt", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role: "GUESSER", gameState }),
+        body: JSON.stringify({ role: "GUESSER", sessionId, gameState }),
       });
 
       const { response: guessData } = await guessResponse.json();
