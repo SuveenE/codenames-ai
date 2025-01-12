@@ -112,6 +112,11 @@ export default function Home() {
         body: JSON.stringify({ role: "CLUE_GIVER", sessionId, gameState }),
       });
 
+      if (clueResponse.status !== 200) {
+        console.error("Error getting clue from AI");
+        return;
+      }
+
       const { response: clueData } = await clueResponse.json();
       const currentTurn: GameTurn = {
         team: gameState.currentTeam,
@@ -147,6 +152,11 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ role: "GUESSER", sessionId, gameState }),
       });
+
+      if (guessResponse.status !== 200) {
+        console.error("Error getting guess from AI");
+        return;
+      }
 
       const { response: guessData } = await guessResponse.json();
 
