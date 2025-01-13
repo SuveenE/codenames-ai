@@ -15,6 +15,7 @@ import GitHubLink from "@/components/GitHubLink";
 import CustomGameDialog from "@/components/CustomGameDialog";
 import { WORD_LIST } from "@/data/wordsList";
 import testGame from "@/data/testGame.json";
+// import { ClueResponse, ClueResponseSchema, GuessResponse } from "@/types/requests";
 
 export default function Home() {
   const [gameState, setGameState] = useState<GameState | null>(null);
@@ -117,13 +118,25 @@ export default function Home() {
         return;
       }
 
-      const { response: clueData } = await clueResponse.json();
+      // gpt-4o
+      const { response: clueDataFinal } = await clueResponse.json();
+
+      //o1 models
+      // const { response: clueData } = await clueResponse.json() as {
+      //   response: ClueResponse | string;
+      // };
+      // const clueDataString = typeof clueData === "string"
+      //   ? clueData.replace(/^```json\n|\n```$/g, '')
+      //   : JSON.stringify(clueData);
+
+      // const clueDataFinal = typeof clueData === "string" ? JSON.parse(clueDataString) : clueData;
+
       const currentTurn: GameTurn = {
         team: gameState.currentTeam,
         clue: {
-          word: clueData.word,
-          number: clueData.number,
-          reasoning: clueData.reasoning,
+          word: clueDataFinal.word,
+          number: clueDataFinal.number,
+          reasoning: clueDataFinal.reasoning,
         },
         guesses: [],
       };
@@ -158,10 +171,22 @@ export default function Home() {
         return;
       }
 
-      const { response: guessData } = await guessResponse.json();
+      // gpt-4o
+      const { response: guessDataFinal } = await guessResponse.json();
+
+      //o1 models
+      // const { response: guessData } = await guessResponse.json() as {
+      //   response: GuessResponse | string;
+      // };
+
+      // const guessDataString = typeof guessData === "string"
+      //   ? guessData.replace(/^```json\n|\n```$/g, '')
+      //   : JSON.stringify(guessData);
+
+      // const guessDataFinal = typeof guessData === "string" ? JSON.parse(guessDataString) : guessData;
 
       // Handle skip (only allowed after at least one guess)
-      if (guessData.skip && currentTurn.guesses.length > 0) {
+      if (guessDataFinal.skip && currentTurn.guesses.length > 0) {
         currentTurn.guesses.push({ word: "SKIP", wasCorrect: false });
         setGameState((prev) => ({
           ...prev!,
@@ -176,7 +201,8 @@ export default function Home() {
 
       // Process the guess
       const cardIndex = gameState.cards.findIndex(
-        (card) => card.word.toLowerCase() === guessData.words.toLowerCase(),
+        (card) =>
+          card.word.toLowerCase() === guessDataFinal.words.toLowerCase(),
       );
 
       if (cardIndex !== -1) {
@@ -184,7 +210,7 @@ export default function Home() {
         if (!card.revealed) {
           const wasCorrect = card.type === gameState.currentTeam;
           currentTurn.guesses.push({
-            word: guessData.words,
+            word: guessDataFinal.words,
             wasCorrect,
           });
 

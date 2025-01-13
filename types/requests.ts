@@ -11,3 +11,6 @@ export const GuessResponseSchema = z.object({
   skip: z.boolean().optional(),
   reasoning: z.string().optional(),
 });
+
+export type ClueResponse = z.infer<typeof ClueResponseSchema>;
+export type GuessResponse = z.infer<typeof GuessResponseSchema>;

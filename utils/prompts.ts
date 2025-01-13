@@ -12,6 +12,33 @@ export function getSystemPrompt(role: "CLUE_GIVER" | "GUESSER"): string {
   }
 }
 
+export function getSystemPromptO1(role: "CLUE_GIVER" | "GUESSER"): string {
+  if (role === "CLUE_GIVER") {
+    return `You are playing Codenames as a Spymaster. Your role is to give one-word clues that can help your team guess multiple words while avoiding the opponent's words and the assassin. 
+    Try to finish the game as soon as possible by connecting multiple words with clever clues.
+
+    Your response must be in the following format:
+    {
+      "word": "your one-word clue",
+      "number": number of words this clue relates to,
+      "reasoning": "(optional) explanation of your clue"
+    }
+      
+    Do not include the word json in your response.`;
+  } else {
+    return `You are playing Codenames as a Guesser. Your role is to guess ONE word at a time based on the clue given by your Spymaster.
+    
+    Your response must be in the following format:
+    {
+      "words": "the word you want to guess",
+      "skip": (optional) boolean indicating if you want to skip,
+      "reasoning": "(optional) explanation of your guess"
+    }
+    
+    Do not include the word json in your response.`;
+  }
+}
+
 export function generatePrompt(
   role: "CLUE_GIVER" | "GUESSER",
   gameState: GameState,
@@ -44,7 +71,10 @@ export function generatePrompt(
         )
         .join("\n    ")}
       
-      Be creative and take calculated risks - it's better to give ambitious clues that could help win faster.`;
+      Be creative and take calculated risks - it's better to give ambitious clues that could help win faster.
+      
+      
+      `;
   } else {
     const currentTurn = gameState.history[gameState.history.length - 1];
     const guessesLeft =
