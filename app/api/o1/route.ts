@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
       try {
         const completion = await openai.chat.completions.create({
-          model: "o1-mini-2024-09-12",
+          model: "o1-preview-2024-09-12",
           messages: [
             {
               role: "user",

@@ -13,9 +13,10 @@ import SpymasterView from "@/components/SpymasterView";
 import GameHistory from "@/components/GameHistory";
 import GitHubLink from "@/components/GitHubLink";
 import CustomGameDialog from "@/components/CustomGameDialog";
+import { Switch } from "@/components/ui/switch";
 import { WORD_LIST } from "@/data/wordsList";
 import testGame from "@/data/testGame.json";
-// import { ClueResponse, ClueResponseSchema, GuessResponse } from "@/types/requests";
+import { ClueResponse, GuessResponse } from "@/types/requests";
 
 export default function Home() {
   const [gameState, setGameState] = useState<GameState | null>(null);
@@ -30,7 +31,7 @@ export default function Home() {
   const [isReplaying, setIsReplaying] = useState(false);
   const [isReplayEnd, setIsReplayEnd] = useState(false);
   const [sessionId, setSessionId] = useState<string>("");
-
+  const [isO1, setIsO1] = useState(false);
   useEffect(() => {
     const uuid = crypto.randomUUID().slice(0, 6);
     setSessionId(uuid);
@@ -107,7 +108,8 @@ export default function Home() {
     // If no lastClue, get a new clue
     if (isTurnEnded) {
       setIsTurnEnded(false);
-      const clueResponse = await fetch("/api/gpt", {
+      const path = isO1 ? "/api/o1" : "/api/gpt";
+      const clueResponse = await fetch(path, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ role: "CLUE_GIVER", sessionId, gameState }),
@@ -118,18 +120,22 @@ export default function Home() {
         return;
       }
 
-      // gpt-4o
-      const { response: clueDataFinal } = await clueResponse.json();
-
-      //o1 models
-      // const { response: clueData } = await clueResponse.json() as {
-      //   response: ClueResponse | string;
-      // };
-      // const clueDataString = typeof clueData === "string"
-      //   ? clueData.replace(/^```json\n|\n```$/g, '')
-      //   : JSON.stringify(clueData);
-
-      // const clueDataFinal = typeof clueData === "string" ? JSON.parse(clueDataString) : clueData;
+      let clueDataFinal;
+      if (isO1) {
+        const { response: clueData } = (await clueResponse.json()) as {
+          response: ClueResponse | string;
+        };
+        const clueDataString =
+          typeof clueData === "string"
+            ? clueData.replace(/^```json\n|\n```$/g, "")
+            : JSON.stringify(clueData);
+        clueDataFinal =
+          typeof clueData === "string" ? JSON.parse(clueDataString) : clueData;
+      } else {
+        // GPT-4 response handling
+        const { response } = await clueResponse.json();
+        clueDataFinal = response;
+      }
 
       const currentTurn: GameTurn = {
         team: gameState.currentTeam,
@@ -152,7 +158,8 @@ export default function Home() {
     }
 
     const currentTurn = gameState.history[gameState.history.length - 1];
-    const maxGuesses = gameState.lastClue?.number ?? 1;
+    const maxGuesses =
+      gameState.lastClue?.number != 0 ? (gameState.lastClue?.number ?? 1) : 100;
 
     // Make guesses up to maxGuesses times
     for (let i = 0; i < maxGuesses + 1; i++) {
@@ -160,7 +167,8 @@ export default function Home() {
       if (currentTurn.guesses.length >= maxGuesses || isTurnEnded) break;
 
       // Get next guess from AI
-      const guessResponse = await fetch("/api/gpt", {
+      const path = isO1 ? "/api/o1" : "/api/gpt";
+      const guessResponse = await fetch(path, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ role: "GUESSER", sessionId, gameState }),
@@ -171,19 +179,24 @@ export default function Home() {
         return;
       }
 
-      // gpt-4o
-      const { response: guessDataFinal } = await guessResponse.json();
-
-      //o1 models
-      // const { response: guessData } = await guessResponse.json() as {
-      //   response: GuessResponse | string;
-      // };
-
-      // const guessDataString = typeof guessData === "string"
-      //   ? guessData.replace(/^```json\n|\n```$/g, '')
-      //   : JSON.stringify(guessData);
-
-      // const guessDataFinal = typeof guessData === "string" ? JSON.parse(guessDataString) : guessData;
+      let guessDataFinal;
+      if (isO1) {
+        const { response: guessData } = (await guessResponse.json()) as {
+          response: GuessResponse | string;
+        };
+        const guessDataString =
+          typeof guessData === "string"
+            ? guessData.replace(/^```json\n|\n```$/g, "")
+            : JSON.stringify(guessData);
+        guessDataFinal =
+          typeof guessData === "string"
+            ? JSON.parse(guessDataString)
+            : guessData;
+      } else {
+        // GPT-4 response handling
+        const { response } = await guessResponse.json();
+        guessDataFinal = response;
+      }
 
       // Handle skip (only allowed after at least one guess)
       if (guessDataFinal.skip && currentTurn.guesses.length > 0) {
@@ -487,6 +500,14 @@ export default function Home() {
                     >
                       Start Game
                     </button>
+                    <div className="flex items-center gap-2 rounded-xl p-2">
+                      <Switch
+                        checked={isO1}
+                        onCheckedChange={setIsO1}
+                        className="border-2 border-gray-300"
+                      />
+                      <p className="text-sm font-bold">o1</p>
+                    </div>
                   </>
                 )}
               {process.env.NODE_ENV === "production" && (
