@@ -1,4 +1,4 @@
-# Codenames AI 
+# Codenames AI
 
 ### I got OpenAI o1 to play Codenames and it's super good.
 
