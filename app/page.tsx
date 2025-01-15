@@ -530,7 +530,7 @@ export default function Home() {
                              transition-all duration-200 mb-3"
                   disabled={isReplaying}
                 >
-                  {isReplaying ? "Replaying..." : "Replay Test Game"}
+                  {isReplaying ? "Replaying..." : "Watch Gameplay [o1 vs o1]"}
                 </button>
               )}
             </div>
