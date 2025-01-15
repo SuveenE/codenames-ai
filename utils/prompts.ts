@@ -85,7 +85,9 @@ export function generatePrompt(
         })
         .join("\n    ")}
       
-      Be creative and take calculated risks - it's better to give ambitious clues that could help win in least number of clues.`;
+      Be creative and take calculated risks - it's better to give ambitious clues that could help win in least number of clues.
+      Analyze all the words and make sure there are no other words connected to the clue.
+      `;
   } else {
     const currentTurn = gameState.history[gameState.history.length - 1];
     const isUnlimited = gameState.lastClue?.number === 100;

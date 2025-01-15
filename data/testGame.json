@@ -1,80 +1,85 @@
 {
-  "date": "2025-01-03 22-16-05",
+  "date": "2025-01-15 23-01-16",
   "initialOptions": {
     "words": [
-      "HALLOWEEN",
-      "MARK",
-      "BUTTER",
-      "RUG",
-      "QUAIL",
-      "COMPOUND",
+      "MODEL",
+      "LOTION",
+      "RICE",
+      "PRESS",
+      "POISON",
+      "PLANE",
+      "PYRAMID",
+      "LINE",
+      "RAY",
+      "MISSILE",
+      "KID",
+      "ROBOT",
+      "PISTOL",
+      "INDIA",
+      "RING",
+      "ORANGE",
+      "SQUARE",
+      "PANTS",
+      "POLE",
       "SCIENTIST",
-      "DONG",
-      "SKATEBOARD",
-      "EDUCATION",
-      "BERMUDA",
-      "FAT",
-      "SNOWBOARD",
-      "TOMBSTONE",
-      "ARMOR",
-      "BERRY",
-      "RAPUNZEL",
-      "BEACH",
-      "BEVERAGE",
-      "CENTER",
-      "JASMINE",
-      "GARGOYLE",
-      "GODZILLA",
-      "PEARL",
-      "SKELETON"
+      "SINK",
+      "JAM",
+      "OCTOPUS",
+      "HONEY",
+      "WITCH"
     ],
     "cardTypes": [
-      "blue",
-      "assassin",
       "red",
       "blue",
-      "red",
+      "blue",
+      "blue",
       "blue",
       "red",
+      "red",
+      "red",
+      "neutral",
+      "neutral",
       "blue",
+      "red",
+      "neutral",
+      "neutral",
+      "neutral",
+      "blue",
+      "neutral",
+      "red",
       "blue",
       "red",
       "red",
       "neutral",
       "red",
-      "red",
-      "neutral",
-      "neutral",
-      "neutral",
-      "neutral",
       "blue",
-      "red",
-      "red",
-      "neutral",
-      "blue",
-      "neutral",
-      "blue"
+      "assassin"
     ]
   },
   "winner": "red",
   "finalScore": {
     "red": 9,
-    "blue": 6
+    "blue": 4
   },
   "history": [
     {
       "team": "red",
       "clue": {
-        "word": "POWDER",
-        "number": 3
+        "word": "Engineer",
+        "number": 3,
+        "reasoning": "The clue 'Engineer' relates to PLANE, ROBOT, and SCIENTIST. Engineers design and work with planes, build robots, and often collaborate with scientists. There's minimal overlap with the opponent's words, making it a calculated risk to help us win quickly."
       },
       "guesses": [
         {
-          "word": "SNOWBOARD",
+          "word": "ROBOT",
           "wasCorrect": true
         },
         {
-          "word": "COMPOUND",
+          "word": "PLANE",
+          "wasCorrect": true
+        },
+        {
+          "word": "MISSILE",
           "wasCorrect": false
         }
       ]
@@ -82,16 +87,21 @@
     {
       "team": "blue",
       "clue": {
-        "word": "MONSTER",
-        "number": 2
+        "word": "Cereal",
+        "number": 3,
+        "reasoning": "Cereal connects to RICE, HONEY, and KID. Rice is a common grain used in cereals, honey is a typical sweetener or flavor in cereals like Honey Nut Cheerios, and kids often eat cereal for breakfast."
       },
       "guesses": [
         {
-          "word": "GODZILLA",
+          "word": "RICE",
           "wasCorrect": true
         },
         {
-          "word": "GARGOYLE",
+          "word": "HONEY",
+          "wasCorrect": true
+        },
+        {
+          "word": "PYRAMID",
           "wasCorrect": false
         }
       ]
@@ -99,105 +109,46 @@
     {
       "team": "red",
       "clue": {
-        "word": "ISLAND",
-        "number": 2
-      },
-      "guesses": [
-        {
-          "word": "BERMUDA",
-          "wasCorrect": true
-        },
-        {
-          "word": "BEACH",
-          "wasCorrect": false
-        }
-      ]
-    },
-    {
-      "team": "blue",
-      "clue": {
-        "word": "HALLOWEEN",
+        "word": "Catwalk",
         "number": 3
       },
       "guesses": [
         {
-          "word": "HALLOWEEN",
+          "word": "MODEL",
           "wasCorrect": true
         },
         {
-          "word": "TOMBSTONE",
-          "wasCorrect": false
-        }
-      ]
-    },
-    {
-      "team": "red",
-      "clue": {
-        "word": "LEARNING",
-        "number": 3
-      },
-      "guesses": [
+          "word": "PANTS",
+          "wasCorrect": true
+        },
         {
-          "word": "EDUCATION",
+          "word": "LINE",
           "wasCorrect": true
         },
         {
           "word": "SCIENTIST",
           "wasCorrect": true
-        },
-        {
-          "word": "CENTER",
-          "wasCorrect": true
         }
       ]
     },
     {
       "team": "blue",
       "clue": {
-        "word": "SPORTS",
-        "number": 2
+        "word": "Juice",
+        "number": 3,
+        "reasoning": "To connect 'ORANGE' (orange juice), 'PRESS' (you press fruits to make juice), and 'KID' (kids often drink juice)"
       },
       "guesses": [
         {
-          "word": "SKATEBOARD",
+          "word": "ORANGE",
           "wasCorrect": true
         },
         {
-          "word": "RUG",
-          "wasCorrect": true
-        }
-      ]
-    },
-    {
-      "team": "red",
-      "clue": {
-        "word": "BIRD",
-        "number": 2
-      },
-      "guesses": [
-        {
-          "word": "QUAIL",
+          "word": "PRESS",
           "wasCorrect": true
         },
         {
-          "word": "JASMINE",
-          "wasCorrect": true
-        }
-      ]
-    },
-    {
-      "team": "blue",
-      "clue": {
-        "word": "BONE",
-        "number": 2
-      },
-      "guesses": [
-        {
-          "word": "SKELETON",
-          "wasCorrect": true
-        },
-        {
-          "word": "ARMOR",
+          "word": "JAM",
           "wasCorrect": false
         }
       ]
@@ -205,12 +156,17 @@
     {
       "team": "red",
       "clue": {
-        "word": "SPREAD",
-        "number": 1
+        "word": "Kraken",
+        "number": 2,
+        "reasoning": "The Kraken is a mythical sea creature known for sinking ships and resembles an octopus, connecting both SINK and OCTOPUS."
       },
       "guesses": [
         {
-          "word": "BUTTER",
+          "word": "OCTOPUS",
+          "wasCorrect": true
+        },
+        {
+          "word": "SINK",
           "wasCorrect": true
         }
       ]
@@ -218,34 +174,99 @@
   ],
   "cards": [
     {
-      "word": "HALLOWEEN",
-      "type": "blue",
+      "word": "MODEL",
+      "type": "red",
       "revealed": true
     },
     {
-      "word": "MARK",
-      "type": "assassin",
+      "word": "LOTION",
+      "type": "blue",
       "revealed": false
     },
     {
-      "word": "BUTTER",
-      "type": "red",
-      "revealed": true
-    },
-    {
-      "word": "RUG",
+      "word": "RICE",
       "type": "blue",
       "revealed": true
     },
     {
-      "word": "QUAIL",
+      "word": "PRESS",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "POISON",
+      "type": "blue",
+      "revealed": false
+    },
+    {
+      "word": "PLANE",
       "type": "red",
       "revealed": true
     },
     {
-      "word": "COMPOUND",
+      "word": "PYRAMID",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "LINE",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "RAY",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "MISSILE",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "KID",
+      "type": "blue",
+      "revealed": false
+    },
+    {
+      "word": "ROBOT",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "PISTOL",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "INDIA",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "RING",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "ORANGE",
       "type": "blue",
       "revealed": true
+    },
+    {
+      "word": "SQUARE",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "PANTS",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "POLE",
+      "type": "blue",
+      "revealed": false
     },
     {
       "word": "SCIENTIST",
@@ -253,94 +274,29 @@
       "revealed": true
     },
     {
-      "word": "DONG",
-      "type": "blue",
-      "revealed": false
-    },
-    {
-      "word": "SKATEBOARD",
-      "type": "blue",
-      "revealed": true
-    },
-    {
-      "word": "EDUCATION",
+      "word": "SINK",
       "type": "red",
       "revealed": true
     },
     {
-      "word": "BERMUDA",
+      "word": "JAM",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "OCTOPUS",
       "type": "red",
       "revealed": true
     },
     {
-      "word": "FAT",
-      "type": "neutral",
-      "revealed": false
-    },
-    {
-      "word": "SNOWBOARD",
-      "type": "red",
-      "revealed": true
-    },
-    {
-      "word": "TOMBSTONE",
-      "type": "red",
-      "revealed": true
-    },
-    {
-      "word": "ARMOR",
-      "type": "neutral",
-      "revealed": true
-    },
-    {
-      "word": "BERRY",
-      "type": "neutral",
-      "revealed": false
-    },
-    {
-      "word": "RAPUNZEL",
-      "type": "neutral",
-      "revealed": false
-    },
-    {
-      "word": "BEACH",
-      "type": "neutral",
-      "revealed": true
-    },
-    {
-      "word": "BEVERAGE",
-      "type": "blue",
-      "revealed": false
-    },
-    {
-      "word": "CENTER",
-      "type": "red",
-      "revealed": true
-    },
-    {
-      "word": "JASMINE",
-      "type": "red",
-      "revealed": true
-    },
-    {
-      "word": "GARGOYLE",
-      "type": "neutral",
-      "revealed": true
-    },
-    {
-      "word": "GODZILLA",
+      "word": "HONEY",
       "type": "blue",
       "revealed": true
     },
     {
-      "word": "PEARL",
-      "type": "neutral",
+      "word": "WITCH",
+      "type": "assassin",
       "revealed": false
-    },
-    {
-      "word": "SKELETON",
-      "type": "blue",
-      "revealed": true
     }
   ]
 }

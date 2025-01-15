@@ -22,6 +22,7 @@ export default function Home() {
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [isProcessingTurn, setIsProcessingTurn] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
+  const [isGameEnded, setIsGameEnded] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [isTurnEnded, setIsTurnEnded] = useState(true);
   const [gameSetup, setGameSetup] = useState<{
@@ -164,7 +165,12 @@ export default function Home() {
     // Make guesses up to maxGuesses times
     for (let i = 0; i < maxGuesses + 1; i++) {
       // Skip if we've already made all guesses
-      if (currentTurn.guesses.length >= maxGuesses || isTurnEnded) break;
+      if (
+        currentTurn.guesses.length >= maxGuesses + 1 ||
+        isTurnEnded ||
+        isGameEnded
+      )
+        break;
 
       // Get next guess from AI
       const path = isO1 ? "/api/o1" : "/api/gpt";
@@ -201,6 +207,7 @@ export default function Home() {
       // Handle skip (only allowed after at least one guess)
       if (guessDataFinal.skip && currentTurn.guesses.length > 0) {
         currentTurn.guesses.push({ word: "SKIP", wasCorrect: false });
+        setIsTurnEnded(true);
         setGameState((prev) => ({
           ...prev!,
           currentTeam: prev!.currentTeam === "red" ? "blue" : "red",
@@ -274,6 +281,7 @@ export default function Home() {
       if (cardType === "assassin") {
         gameOver = true;
         winner = prev.currentTeam === "red" ? "blue" : "red";
+        setIsGameEnded(true);
       }
       // Handle regular scoring
       else {
@@ -284,9 +292,11 @@ export default function Home() {
         if (newRedScore === 9) {
           gameOver = true;
           winner = "red";
+          setIsGameEnded(true);
         } else if (newBlueScore === 8) {
           gameOver = true;
           winner = "blue";
+          setIsGameEnded(true);
         }
 
         // Switch turns if wrong card is picked
@@ -461,7 +471,7 @@ export default function Home() {
                      transition-all duration-200"
               disabled={isReplaying}
             >
-              {isReplaying ? "Replaying..." : "Replay Test Game"}
+              {isReplaying ? "Replaying..." : "Watch Gameplay [o1 vs o1]"}
             </button>
           )}
         </div>
@@ -544,7 +554,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="text-sm">
-                {isProcessingTurn ? (
+                {isProcessingTurn && !isGameEnded ? (
                   <div className="flex items-center gap-2 animate-pulse">
                     <div
                       className={`h-2 w-2 rounded-full ${gameState?.currentTeam === "red" ? "bg-red-500" : "bg-blue-500"}`}
@@ -561,21 +571,27 @@ export default function Home() {
                     </span>
                   </div>
                 ) : (
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`h-2 w-2 rounded-full ${gameState?.currentTeam === "red" ? "bg-red-500" : "bg-blue-500"}`}
-                    ></div>
-                    <span
-                      className={
-                        gameState?.currentTeam === "red"
-                          ? "text-red-500"
-                          : "text-blue-500"
-                      }
-                    >
-                      {gameState?.currentTeam === "red" ? "Red" : "Blue"}{" "}
-                      Team&apos;s Turn
-                    </span>
-                  </div>
+                  !isGameEnded && (
+                    <div className="flex items-center gap-2">
+                      <div
+                        className={`h-2 w-2 rounded-full ${
+                          gameState?.currentTeam === "red"
+                            ? "bg-red-500"
+                            : "bg-blue-500"
+                        }`}
+                      ></div>
+                      <span
+                        className={
+                          gameState?.currentTeam === "red"
+                            ? "text-red-500"
+                            : "text-blue-500"
+                        }
+                      >
+                        {gameState?.currentTeam === "red" ? "Red" : "Blue"}{" "}
+                        Team&apos;s Turn
+                      </span>
+                    </div>
+                  )
                 )}
               </div>
             </div>
