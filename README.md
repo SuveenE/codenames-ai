@@ -1,6 +1,10 @@
-# Codenames AI (WIP)
+# Codenames AI 
 
-How good is AI in Codenames? New to Codenames? Here's a 3-minute [video](https://www.youtube.com/watch?v=WErB95Brgbs) explaining how it works.
+### I got OpenAI o1 to play Codenames and it's super good.
+
+Will be sharing the interesting results I found on a blog post soon.
+
+New to Codenames? Here's a 3-minute [video](https://www.youtube.com/watch?v=WErB95Brgbs) explaining how it works.
 
 Features
 
@@ -8,7 +12,7 @@ Features
 - See AI play a game with a custom set of words and a custom board (If you just finished playing a game, see how AI would have played it)
 - Replay previous games ( Currently this is suppored only for a test game )
 
-<img width="757" alt="Screenshot 2025-01-01 at 20 40 27" src="https://github.com/user-attachments/assets/a9c97907-4249-4ce1-82bc-b15e612b1643" />
+<img width="757" alt="Screenshot 2025-01-01 at 20 40 27" src="https://github.com/user-attachments/assets/06fe1543-096c-4b0e-b434-861f05e424f8" />
 
 ## The story behind
 
