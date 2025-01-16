@@ -35,7 +35,7 @@ export default function Home() {
   const [isO1, setIsO1] = useState(false);
   useEffect(() => {
     const uuid = crypto.randomUUID().slice(0, 6);
-    setSessionId(uuid);
+    setSessionId("Game 8 - gpt-4o");
   }, []);
 
   const handleCustomGame = (words: string[], cardTypes: CardType[]) => {
@@ -450,7 +450,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen p-8">
-      <div className="md:hidden min-h-screen flex items-center justify-center p-8">
+      {/* <div className="md:hidden min-h-screen flex items-center justify-center p-8">
         <div className="text-center space-y-4">
           <h1 className="text-2xl font-bold">Codenames AI</h1>
           <p className="text-gray-600">
@@ -458,13 +458,13 @@ export default function Home() {
             experience.
           </p>
         </div>
-      </div>
-      <div className="hidden md:block max-w-7xl mx-auto">
+      </div> */}
+      <div className="max-w-7xl mx-auto">
         <div className="relative">
           {process.env.NODE_ENV !== "production" && (
             <button
               onClick={replayTestGame}
-              className="fixed right-4 top-4 inline-flex items-center justify-center rounded-xl
+              className="hidden md:block fixed right-4 top-4 inline-flex items-center justify-center rounded-xl
                        bg-gradient-to-r from-indigo-600 to-blue-600 
                      px-4 py-2 text-xs font-semibold text-white shadow-sm 
                      hover:from-indigo-500 hover:to-blue-500
@@ -476,9 +476,9 @@ export default function Home() {
           )}
         </div>
         <div className="mb-8 flex items-center flex-row gap-8 justify-center">
-          <div className=" space-y-3">
+          <div className="ml-6 md:ml-0 space-y-3">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
                 Codenames AI
               </h1>
               <p className="text-gray-600 text-sm">
@@ -488,7 +488,7 @@ export default function Home() {
             <div className="flex gap-4">
               {!isGameStarted &&
                 !isReplaying &&
-                process.env.NODE_ENV !== "production" && (
+                process.env.NEXT_PUBLIC_ENVIRONMENT !== "production" && (
                   <>
                     <button
                       onClick={() => setDialogOpen(true)}
@@ -520,12 +520,12 @@ export default function Home() {
                     </div>
                   </>
                 )}
-              {process.env.NODE_ENV === "production" && (
+              {process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && (
                 <button
                   onClick={replayTestGame}
                   className="inline-flex items-center justify-center rounded-xl
                              bg-gradient-to-r from-indigo-600 to-blue-600 
-                             px-4 py-2 text-xs font-semibold text-white shadow-sm 
+                             px-4 py-2 text-xs md:text-sm font-semibold text-white shadow-sm 
                              hover:from-indigo-500 hover:to-blue-500
                              transition-all duration-200 mb-3"
                   disabled={isReplaying}
@@ -539,7 +539,7 @@ export default function Home() {
               onOpenChange={setDialogOpen}
               onStartCustomGame={handleCustomGame}
             />
-            <div className="flex items-center gap-8 text-lg font-medium">
+            <div className="flex items-center gap-8 text-sm md:text-lg font-medium">
               <div className="flex items-center gap-4">
                 <p className="text-neutral-500 text-sm">Score:</p>
                 <div className="flex items-center gap-2">
@@ -553,7 +553,7 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <div className="text-sm">
+              <div className="text-xs md:text-sm">
                 {isProcessingTurn && !isGameEnded ? (
                   <div className="flex items-center gap-2 animate-pulse">
                     <div
@@ -599,9 +599,9 @@ export default function Home() {
           <SpymasterView cards={gameState?.cards ?? []} />
         </div>
 
-        <div className="flex flex-row gap-8 justify-center">
+        <div className="flex flex-col md:flex-row gap-8 justify-center">
           <div
-            className={`flex justify-center w-fit transition-all duration-500 ease-in-out bg-gray-100 rounded-xl ${
+            className={`flex flex-col md:flex-row justify-center w-fit transition-all duration-500 ease-in-out bg-gray-100 rounded-xl ${
               isGameStarted || isReplaying ? "justify-start" : "justify-center"
             }`}
           >
@@ -616,6 +616,9 @@ export default function Home() {
                 isSpymaster={false}
               />
             </div>
+            <p className="md:hidden text-[9px] text-center md:text-sm text-neutral-500">
+              Check the website on desktop for the best experience
+            </p>
             {(isGameStarted || isReplaying || isReplayEnd) && (
               <div className="w-120 space-y-4 transition-all duration-500 ease-in-out animate-fade-in">
                 <GameHistory

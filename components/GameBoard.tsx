@@ -18,8 +18,8 @@ export default function GameBoard({
           key={index}
           onClick={() => onCardClick(index)}
           className={`
-            aspect-[4/3] p-2 w-24 h-24 rounded-xl shadow-md flex items-center justify-center
-            text-center font-medium transition-all text-xs
+            aspect-[4/3] p-2 w-16 h-16 md:w-24 md:h-24 rounded-xl shadow-md flex items-center justify-center
+            text-center font-medium transition-all md:text-xs text-[8px]
             ${
               card.revealed
                 ? getRevealedCardStyle(card.type)

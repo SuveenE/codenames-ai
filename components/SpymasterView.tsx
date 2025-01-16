@@ -6,9 +6,11 @@ interface SpymasterViewProps {
 
 export default function SpymasterView({ cards }: SpymasterViewProps) {
   return (
-    <div className="border rounded-lg p-4">
-      <h2 className="text-sm font-bold text-center mb-2">Spymaster View</h2>
-      <div className="grid grid-cols-5 gap-1 w-[120px]">
+    <div className="border rounded-lg p-2 md:p-4">
+      <h2 className="text-[9px] md:text-sm font-bold text-center mb-2">
+        Spymaster View
+      </h2>
+      <div className="grid grid-cols-5 gap-1 w-[90px] md:w-[120px]">
         {cards.map((card, index) => (
           <div
             key={index}

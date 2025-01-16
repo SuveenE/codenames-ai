@@ -10,7 +10,7 @@ export default function GameHistory({ history, winner }: GameHistoryProps) {
   const blueTurns = history.filter((turn) => turn.team === "blue");
 
   return (
-    <div className="bg-neutral-100 rounded-lg p-4 h-fit overflow-y-auto min-w-[500px]">
+    <div className="bg-neutral-100 rounded-lg p-4 h-fit overflow-y-auto min-w-[360px] md:min-w-[500px]">
       <h2 className="text-md font-bold mb-4 text-neutral-800">Game History</h2>
       {winner && (
         <div
@@ -24,11 +24,14 @@ export default function GameHistory({ history, winner }: GameHistoryProps) {
         </div>
       )}
       <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-1 text-xs">
+        <div className="space-y-1 text-[9px] md:text-xs">
           <h3 className="font-semibold text-red-500 mb-2">Red Team</h3>
           {redTurns.length > 0 ? (
             redTurns.map((turn, index) => (
-              <div key={index} className="bg-white rounded-xl p-3 shadow-sm">
+              <div
+                key={index}
+                className="bg-white rounded-xl p-2 md:p-3 shadow-sm"
+              >
                 <div className="flex">
                   <div className="w-1.5 rounded mr-3 bg-red-500" />
                   <div className="">
@@ -44,7 +47,7 @@ export default function GameHistory({ history, winner }: GameHistoryProps) {
                       <span className="font-semibold text-neutral-700">
                         Guesses:
                       </span>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 max-w-[120px] md:max-w-full">
                         {turn.guesses.map((guess, guessIndex) => (
                           <span
                             key={guessIndex}
@@ -75,7 +78,7 @@ export default function GameHistory({ history, winner }: GameHistoryProps) {
             </div>
           )}
         </div>
-        <div className="space-y-1 text-xs">
+        <div className="space-y-1 text-[9px] md:text-xs">
           <h3 className="font-semibold text-blue-500 mb-2">Blue Team</h3>
           {blueTurns.length > 0 ? (
             blueTurns.map((turn, index) => (
@@ -95,7 +98,7 @@ export default function GameHistory({ history, winner }: GameHistoryProps) {
                       <span className="font-semibold text-neutral-700">
                         Guesses:
                       </span>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 max-w-[100px] md:max-w-full">
                         {turn.guesses.map((guess, guessIndex) => (
                           <span
                             key={guessIndex}
