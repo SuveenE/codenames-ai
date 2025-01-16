@@ -34,6 +34,7 @@ export default function Home() {
   const [sessionId, setSessionId] = useState<string>("");
   const [isO1, setIsO1] = useState(false);
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const uuid = crypto.randomUUID().slice(0, 6);
     setSessionId("Game 8 - gpt-4o");
   }, []);
