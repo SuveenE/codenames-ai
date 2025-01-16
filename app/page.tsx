@@ -431,6 +431,10 @@ export default function Home() {
         };
       });
 
+      if (window.innerWidth < 768) {
+        window.scrollBy({ top: 100, behavior: "smooth" });
+      }
+
       await delay(1000);
     }
 
@@ -451,7 +455,7 @@ export default function Home() {
   if (!gameState) return <div>Loading...</div>;
 
   return (
-    <main className="min-h-screen px-1 py-8 md:p-8">
+    <main className="min-h-screen px-1 py-8 md:p-8 overflow-y-scroll">
       <div className="max-w-7xl mx-auto">
         <div className="relative">
           {process.env.NEXT_PUBLIC_ENVIRONMENT !== "production" && (
@@ -595,12 +599,15 @@ export default function Home() {
 
         <div className="flex flex-col md:flex-row gap-8 justify-center">
           <div
-            className={`flex flex-col md:flex-row justify-center transition-all w-fit duration-500 ease-in-out bg-gray-100 rounded-xl ${
+            className={`flex flex-col-reverse md:flex-row justify-center transition-all w-fit duration-500 ease-in-out bg-gray-100 rounded-xl mx-auto md:mx-0 ${
               isGameStarted || isReplaying ? "justify-start" : "justify-center"
             }`}
           >
+            <p className="md:hidden text-[9px] text-center md:text-sm text-neutral-500">
+              Check the website on desktop for the best experience
+            </p>
             <div
-              className={`transition-all duration-500 ease-in-out mx-auto md:mx-0 ${
+              className={`transition-all duration-500 ease-in-out mx-auto ${
                 isGameStarted || isReplaying ? "translate-x-0" : ""
               }`}
             >
@@ -610,9 +617,6 @@ export default function Home() {
                 isSpymaster={false}
               />
             </div>
-            <p className="md:hidden text-[9px] text-center md:text-sm text-neutral-500">
-              Check the website on desktop for the best experience
-            </p>
             {(isGameStarted || isReplaying || isReplayEnd) && (
               <div className="w-120 space-y-4 transition-all duration-500 ease-in-out animate-fade-in">
                 <GameHistory
