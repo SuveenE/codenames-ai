@@ -16,6 +16,7 @@ export interface GameTurn {
   guesses: {
     word: string;
     wasCorrect: boolean;
+    reasoning?: string;
   }[];
   guessesReasoning?: string;
 }

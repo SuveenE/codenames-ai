@@ -36,7 +36,7 @@ export default function Home() {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const uuid = crypto.randomUUID().slice(0, 6);
-    setSessionId("Game 8 - gpt-4o");
+    setSessionId(uuid);
   }, []);
 
   const handleCustomGame = (words: string[], cardTypes: CardType[]) => {
@@ -200,7 +200,7 @@ export default function Home() {
             ? JSON.parse(guessDataString)
             : guessData;
       } else {
-        // GPT-4 response handling
+        // GPT-4o response handling
         const { response } = await guessResponse.json();
         guessDataFinal = response;
       }
@@ -232,7 +232,8 @@ export default function Home() {
           const wasCorrect = card.type === gameState.currentTeam;
           currentTurn.guesses.push({
             word: guessDataFinal.words,
-            wasCorrect,
+            wasCorrect: wasCorrect,
+            reasoning: guessDataFinal.reasoning,
           });
 
           await delay(1000);
@@ -451,18 +452,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen p-8">
-      {/* <div className="md:hidden min-h-screen flex items-center justify-center p-8">
-        <div className="text-center space-y-4">
-          <h1 className="text-2xl font-bold">Codenames AI</h1>
-          <p className="text-gray-600">
-            Please view this experience on a desktop browser for the best
-            experience.
-          </p>
-        </div>
-      </div> */}
       <div className="max-w-7xl mx-auto">
         <div className="relative">
-          {process.env.NODE_ENV !== "production" && (
+          {process.env.NEXT_PUBLIC_ENVIRONMENT !== "production" && (
             <button
               onClick={replayTestGame}
               className="hidden md:block fixed right-4 top-4 inline-flex items-center justify-center rounded-xl
@@ -512,6 +504,7 @@ export default function Home() {
                       Start Game
                     </button>
                     <div className="flex items-center gap-2 rounded-xl p-2">
+                      <p className="text-sm font-bold">gpt-4o</p>
                       <Switch
                         checked={isO1}
                         onCheckedChange={setIsO1}

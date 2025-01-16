@@ -20,10 +20,10 @@ export function getSystemPrompt(role: "CLUE_GIVER" | "GUESSER"): string {
 
 export function getSystemPromptO1(role: "CLUE_GIVER" | "GUESSER"): string {
   if (role === "CLUE_GIVER") {
-    return `You are playing Codenames as a Spymaster. Your role is to give one-word clues that can help your team guess multiple words while avoiding the opponent's words and the assassin. 
+    return `You are playing Codenames as a clue giver. Your role is to give one-word clues that can help your guesser who is also a o1 model with the same reasoning process, guess multiple words while avoiding the opponent's words and the assassin. 
     Try to finish the game as soon as possible by connecting multiple words with clever clues.
     You are allowed to use 0 as the number part of your clue. For example, feathers: 0 means, "None of our words relate to feathers." If 0 is the number, the usual limit on guesses does not apply. 
-    Sometimes you may have multiple unguessed words related to clues from the previous rounds. If you want your team to guess more than one of them, you may say 100. For example feathers: 100.
+    Sometimes you may have multiple unguessed words related to clues from the previous rounds. If you want your guesser to guess more than one of them, you may say 100. For example feathers: 100.
 
     Your response must be in the following format:
     {
@@ -34,7 +34,7 @@ export function getSystemPromptO1(role: "CLUE_GIVER" | "GUESSER"): string {
       
     Do not include the word json in your response.`;
   } else {
-    return `You are playing Codenames as a Guesser. Your role is to guess ONE word at a time based on the clue given by your Spymaster.
+    return `You are playing Codenames as a Guesser. Your role is to guess ONE word at a time based on the clue given by your clue giver who is also a o1 model with the same reasoning process. 
     
     Your response must be in the following format:
     {
@@ -87,6 +87,8 @@ export function generatePrompt(
       
       Be creative and take calculated risks - it's better to give ambitious clues that could help win in least number of clues.
       Analyze all the words and make sure there are no other words connected to the clue.
+      The guesser is also an o1 model. Keep in mind that you and your guesser has the same reasoning process. Try to think of connections between the words
+      that the guesser could think of.
       `;
   } else {
     const currentTurn = gameState.history[gameState.history.length - 1];
@@ -129,9 +131,12 @@ export function generatePrompt(
         .join("\n    ")}
         
       Strategically analyze the previous turns and the clue to make your best guess.
+      In your first turn, do not guess more words than the number of words the clue giver gave.
       If the opponent has remaining words from their previous turns, try to internally guess what their words could be and avoid them.
       If you missed guessing words from the previous turns, and you have guesses left, try to guess them now.
-      Try to think how the spymaster is thinking and make your guess accordingly.
+      Try to think how the clue giver is thinking and make your guess accordingly.
+      The clue giver is also an o1 model. Keep in mind that you and your clue giver has the same reasoning process. Try to think what words he would've tried to 
+      connect using the clue.
         `;
   }
 }
