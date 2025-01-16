@@ -362,7 +362,10 @@ export default function Home() {
 
     // Replay each turn
     for (const turn of testGame.history) {
-      // Show the clue and initialize empty guesses
+      if (window.innerWidth < 768) {
+        window.scrollBy({ top: 100, behavior: "smooth" });
+      }
+
       setGameState((prev) => {
         if (!prev) return prev;
 
@@ -430,10 +433,6 @@ export default function Home() {
           lastClue: undefined,
         };
       });
-
-      if (window.innerWidth < 768) {
-        window.scrollBy({ top: 100, behavior: "smooth" });
-      }
 
       await delay(1000);
     }
