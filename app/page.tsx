@@ -451,7 +451,7 @@ export default function Home() {
   if (!gameState) return <div>Loading...</div>;
 
   return (
-    <main className="min-h-screen p-8">
+    <main className="min-h-screen px-1 py-8 md:p-8">
       <div className="max-w-7xl mx-auto">
         <div className="relative">
           {process.env.NEXT_PUBLIC_ENVIRONMENT !== "production" && (
@@ -468,10 +468,10 @@ export default function Home() {
             </button>
           )}
         </div>
-        <div className="mb-8 flex items-center flex-row gap-8 justify-center">
+        <div className="mb-8 flex items-center flex-row gap-2 md:gap-8 justify-center">
           <div className="ml-6 md:ml-0 space-y-3">
             <div className="space-y-2">
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
+              <h1 className="text-xl md:text-3xl font-bold tracking-tight">
                 Codenames AI
               </h1>
               <p className="text-gray-600 text-sm">
@@ -519,7 +519,7 @@ export default function Home() {
                   onClick={replayTestGame}
                   className="inline-flex items-center justify-center rounded-xl
                              bg-gradient-to-r from-indigo-600 to-blue-600 
-                             px-4 py-2 text-xs md:text-sm font-semibold text-white shadow-sm 
+                              px-3 md:px-4 py-2 text-[10px] md:text-sm font-semibold text-white shadow-sm 
                              hover:from-indigo-500 hover:to-blue-500
                              transition-all duration-200 mb-3"
                   disabled={isReplaying}
@@ -547,7 +547,7 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <div className="text-xs md:text-sm">
+              <div className="md:block hidden text-sm">
                 {isProcessingTurn && !isGameEnded ? (
                   <div className="flex items-center gap-2 animate-pulse">
                     <div
@@ -595,12 +595,12 @@ export default function Home() {
 
         <div className="flex flex-col md:flex-row gap-8 justify-center">
           <div
-            className={`flex flex-col md:flex-row justify-center w-fit transition-all duration-500 ease-in-out bg-gray-100 rounded-xl ${
+            className={`flex flex-col md:flex-row justify-center transition-all w-fit duration-500 ease-in-out bg-gray-100 rounded-xl ${
               isGameStarted || isReplaying ? "justify-start" : "justify-center"
             }`}
           >
             <div
-              className={`transition-all duration-500 ease-in-out ${
+              className={`transition-all duration-500 ease-in-out mx-auto md:mx-0 ${
                 isGameStarted || isReplaying ? "translate-x-0" : ""
               }`}
             >

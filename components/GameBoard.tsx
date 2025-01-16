@@ -12,7 +12,7 @@ export default function GameBoard({
   isSpymaster,
 }: GameBoardProps) {
   return (
-    <div className="grid grid-cols-5 gap-2 max-w-fit p-4 bg-gray-100 rounded-xl">
+    <div className="grid grid-cols-5 gap-2 max-w-[400px] md:max-w-fit p-4 bg-gray-100 rounded-xl">
       {cards.map((card, index) => (
         <button
           key={index}
