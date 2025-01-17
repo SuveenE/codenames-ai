@@ -1,0 +1,322 @@
+{
+  "date": "2025-01-16 22-24-07",
+  "initialOptions": {
+    "words": [
+      "MONA LISA",
+      "FIGURE",
+      "PRICK",
+      "BLOCK",
+      "AMERICA",
+      "AGENT",
+      "AFRICA",
+      "SHARK",
+      "SPOT",
+      "LINK",
+      "STAR",
+      "AIR",
+      "BATTERY",
+      "ALIEN",
+      "LASER",
+      "RANCH",
+      "VIKING",
+      "RING",
+      "SUMO",
+      "CHERRY",
+      "BOOT",
+      "CONE",
+      "LINE",
+      "ASTRONAUT",
+      "BRIDGE"
+    ],
+    "cardTypes": [
+      "neutral",
+      "red",
+      "neutral",
+      "neutral",
+      "neutral",
+      "blue",
+      "blue",
+      "neutral",
+      "red",
+      "neutral",
+      "red",
+      "blue",
+      "red",
+      "red",
+      "blue",
+      "blue",
+      "red",
+      "red",
+      "blue",
+      "blue",
+      "red",
+      "neutral",
+      "red",
+      "assassin",
+      "blue"
+    ]
+  },
+  "winner": "red",
+  "finalScore": {
+    "red": 9,
+    "blue": 4
+  },
+  "history": [
+    {
+      "team": "red",
+      "clue": {
+        "word": "Drawing",
+        "number": 3,
+        "reasoning": "Connects SPOT, LINE, and FIGURE; all are fundamental elements involved in drawing."
+      },
+      "guesses": [
+        {
+          "word": "LINE",
+          "wasCorrect": true,
+          "reasoning": "Line is fundamental to drawing, as drawings are composed of lines."
+        },
+        {
+          "word": "FIGURE",
+          "wasCorrect": true,
+          "reasoning": "Figure drawing is a common art practice, so 'FIGURE' is likely related to the clue 'Drawing'."
+        },
+        {
+          "word": "MONA LISA",
+          "wasCorrect": false,
+          "reasoning": "Mona Lisa is a famous artwork that relates to drawing."
+        }
+      ]
+    },
+    {
+      "team": "blue",
+      "clue": {
+        "word": "007",
+        "number": 2,
+        "reasoning": "James Bond's code number connects 'Agent' and 'Laser'"
+      },
+      "guesses": [
+        {
+          "word": "AGENT",
+          "wasCorrect": true,
+          "reasoning": "James Bond, also known as 007, is a secret agent."
+        },
+        {
+          "word": "LASER",
+          "wasCorrect": true,
+          "reasoning": "In the James Bond film 'Goldfinger', Bond is famously threatened with a laser. This connects 'LASER' to the clue '007'."
+        },
+        {
+          "word": "SKIP",
+          "wasCorrect": false
+        }
+      ]
+    },
+    {
+      "team": "red",
+      "clue": {
+        "word": "Invader",
+        "number": 2,
+        "reasoning": "Connects VIKING and ALIEN"
+      },
+      "guesses": [
+        {
+          "word": "ALIEN",
+          "wasCorrect": true,
+          "reasoning": "I choose 'ALIEN' because 'Invader' is commonly associated with 'Alien Invaders' or 'Space Invaders'."
+        },
+        {
+          "word": "VIKING",
+          "wasCorrect": true,
+          "reasoning": "VIKING is closely associated with 'Invader' because Vikings were known for invading and raiding territories during the Viking Age."
+        },
+        {
+          "word": "STAR",
+          "wasCorrect": true,
+          "reasoning": "I think 'STAR' relates to the previous clue 'Drawing', as you can draw a star."
+        }
+      ]
+    },
+    {
+      "team": "blue",
+      "clue": {
+        "word": "Japan",
+        "number": 2,
+        "reasoning": "To help the team guess SUMO and CHERRY, both strongly associated with Japan."
+      },
+      "guesses": [
+        {
+          "word": "SUMO",
+          "wasCorrect": true,
+          "reasoning": "SUMO is a traditional Japanese sport strongly associated with Japan, making it a likely match for the clue 'Japan'"
+        },
+        {
+          "word": "CHERRY",
+          "wasCorrect": true,
+          "reasoning": "Cherry blossoms are iconic in Japan."
+        },
+        {
+          "word": "RING",
+          "wasCorrect": false,
+          "reasoning": "I believe 'RING' connects to our previous clue '007'. In the James Bond movie 'Spectre', the ring with the octopus symbol is a key plot element related to the secret organization. Therefore, 'RING' might be one of our words."
+        }
+      ]
+    },
+    {
+      "team": "red",
+      "clue": {
+        "word": "Car",
+        "number": 3,
+        "reasoning": "Battery, boot, and spot are all associated with cars."
+      },
+      "guesses": [
+        {
+          "word": "BATTERY",
+          "wasCorrect": true,
+          "reasoning": "Cars have batteries."
+        },
+        {
+          "word": "BOOT",
+          "wasCorrect": true,
+          "reasoning": "I associate 'boot' with 'car' because in British English, the trunk of a car is called a boot."
+        },
+        {
+          "word": "SPOT",
+          "wasCorrect": true,
+          "reasoning": "I believe 'SPOT' relates to 'Parking spot', which is associated with a car."
+        },
+        {
+          "word": "BLOCK",
+          "wasCorrect": false,
+          "reasoning": "I believe 'BLOCK' relates to the clue 'Car' as in 'engine block'. Additionally, it doesn't seem to be associated with the opponent's previous clues, so it's a safe guess."
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "word": "MONA LISA",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "FIGURE",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "PRICK",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "BLOCK",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "AMERICA",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "AGENT",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "AFRICA",
+      "type": "blue",
+      "revealed": false
+    },
+    {
+      "word": "SHARK",
+      "type": "neutral",
+      "revealed": true
+    },
+    {
+      "word": "SPOT",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "LINK",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "STAR",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "AIR",
+      "type": "blue",
+      "revealed": false
+    },
+    {
+      "word": "BATTERY",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "ALIEN",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "LASER",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "RANCH",
+      "type": "blue",
+      "revealed": false
+    },
+    {
+      "word": "VIKING",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "RING",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "SUMO",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "CHERRY",
+      "type": "blue",
+      "revealed": true
+    },
+    {
+      "word": "BOOT",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "CONE",
+      "type": "neutral",
+      "revealed": false
+    },
+    {
+      "word": "LINE",
+      "type": "red",
+      "revealed": true
+    },
+    {
+      "word": "ASTRONAUT",
+      "type": "assassin",
+      "revealed": false
+    },
+    {
+      "word": "BRIDGE",
+      "type": "blue",
+      "revealed": false
+    }
+  ]
+}

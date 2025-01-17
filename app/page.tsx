@@ -15,7 +15,7 @@ import GitHubLink from "@/components/GitHubLink";
 import CustomGameDialog from "@/components/CustomGameDialog";
 import { Switch } from "@/components/ui/switch";
 import { WORD_LIST } from "@/data/wordsList";
-import testGame from "@/data/testGame.json";
+import testGame from "@/data/testGame2.json";
 import { ClueResponse, GuessResponse } from "@/types/requests";
 
 export default function Home() {
@@ -362,10 +362,6 @@ export default function Home() {
 
     // Replay each turn
     for (const turn of testGame.history) {
-      if (window.innerWidth < 768) {
-        window.scrollBy({ top: 100, behavior: "smooth" });
-      }
-
       setGameState((prev) => {
         if (!prev) return prev;
 
@@ -390,6 +386,10 @@ export default function Home() {
         const cardIndex = testGame.initialOptions.words.findIndex(
           (word) => word.toLowerCase() === guess.word.toLowerCase(),
         );
+
+        if (window.innerWidth < 768) {
+          window.scrollBy({ top: 200, behavior: "smooth" });
+        }
 
         if (cardIndex !== -1) {
           setGameState((prev) => {
