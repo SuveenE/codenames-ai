@@ -13,10 +13,11 @@ const createOpenAIClient = async (
   role: "CLUE_GIVER" | "GUESSER",
   sessionId: string,
   gameState: GameState,
+  apiKey: string,
 ) => {
   return observeOpenAI(
     new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+      apiKey: apiKey,
     }),
     {
       generationName: role === "CLUE_GIVER" ? "clue giver" : "guesser",
@@ -30,6 +31,14 @@ const createOpenAIClient = async (
 
 export async function POST(request: Request) {
   try {
+    const apiKey = request.headers.get("X-API-Key");
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "API key is required" },
+        { status: 401 },
+      );
+    }
+
     const body = await request.json();
     const {
       role,
@@ -41,7 +50,7 @@ export async function POST(request: Request) {
       gameState: GameState;
     } = body;
 
-    const openai = await createOpenAIClient(role, sessionId, gameState);
+    const openai = await createOpenAIClient(role, sessionId, gameState, apiKey);
 
     const prompt = generatePrompt(role, gameState);
 

@@ -15,8 +15,11 @@ import GitHubLink from "@/components/GitHubLink";
 import CustomGameDialog from "@/components/CustomGameDialog";
 import { Switch } from "@/components/ui/switch";
 import { WORD_LIST } from "@/data/wordsList";
-import testGame from "@/data/testGame2.json";
+import testGame from "@/data/testGame7.json";
 import { ClueResponse, GuessResponse } from "@/types/requests";
+import { getStoredApiKey } from "@/utils/encryption";
+import ApiKeyDialog from "@/components/ApiKeyDialog";
+import { SettingsIcon, HomeIcon } from "lucide-react";
 
 export default function Home() {
   const [gameState, setGameState] = useState<GameState | null>(null);
@@ -33,6 +36,12 @@ export default function Home() {
   const [isReplayEnd, setIsReplayEnd] = useState(false);
   const [sessionId, setSessionId] = useState<string>("");
   const [isO1, setIsO1] = useState(false);
+  const [apiKeyDialogOpen, setApiKeyDialogOpen] = useState(false);
+  const [pendingAction, setPendingAction] = useState<"start" | "custom" | null>(
+    null,
+  );
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const uuid = crypto.randomUUID().slice(0, 6);
@@ -104,7 +113,41 @@ export default function Home() {
     isGameStarted,
   ]);
 
+  const handleApiKeySubmit = () => {
+    setApiKeyDialogOpen(false);
+    if (pendingAction === "start") {
+      handleStartGame();
+    } else if (pendingAction === "custom") {
+      setDialogOpen(true);
+    }
+    setPendingAction(null);
+  };
+
+  const handleStartClick = () => {
+    if (!getStoredApiKey()) {
+      setPendingAction("start");
+      setApiKeyDialogOpen(true);
+    } else {
+      handleStartGame();
+    }
+  };
+
+  const handleCustomClick = () => {
+    if (!getStoredApiKey()) {
+      setPendingAction("custom");
+      setApiKeyDialogOpen(true);
+    } else {
+      setDialogOpen(true);
+    }
+  };
+
   async function handleAITurn() {
+    const apiKey = getStoredApiKey();
+    if (!apiKey) {
+      console.error("No API key found");
+      return;
+    }
+
     if (!gameState || gameState.gameOver) return;
 
     // If no lastClue, get a new clue
@@ -113,7 +156,10 @@ export default function Home() {
       const path = isO1 ? "/api/o1" : "/api/gpt";
       const clueResponse = await fetch(path, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": apiKey,
+        },
         body: JSON.stringify({ role: "CLUE_GIVER", sessionId, gameState }),
       });
 
@@ -177,7 +223,10 @@ export default function Home() {
       const path = isO1 ? "/api/o1" : "/api/gpt";
       const guessResponse = await fetch(path, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": apiKey,
+        },
         body: JSON.stringify({ role: "GUESSER", sessionId, gameState }),
       });
 
@@ -456,8 +505,27 @@ export default function Home() {
   return (
     <main className="min-h-screen px-1 py-8 md:p-8 overflow-y-scroll">
       <div className="max-w-7xl mx-auto">
-        <div className="relative">
-          {process.env.NEXT_PUBLIC_ENVIRONMENT !== "production" && (
+        <div className="relative flex justify-between items-start">
+          <button
+            onClick={() => setSettingsOpen(true)}
+            className="hidden md:block fixed left-4 top-4 p-2 rounded-full bg-white shadow-md
+                     hover:bg-gray-50 transition-colors duration-200
+                     text-gray-600 hover:text-gray-800"
+            aria-label="Settings"
+          >
+            <SettingsIcon className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => window.location.reload()}
+            className="hidden md:block fixed left-16 top-4 p-2 rounded-full bg-white shadow-md
+                     hover:bg-gray-50 transition-colors duration-200
+                     text-gray-600 hover:text-gray-800"
+            aria-label="Settings"
+          >
+            <HomeIcon className="w-5 h-5" />
+          </button>
+
+          {process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && (
             <button
               onClick={replayTestGame}
               className="hidden md:block fixed right-4 top-4 inline-flex items-center justify-center rounded-xl
@@ -484,11 +552,11 @@ export default function Home() {
             <div className="flex gap-4">
               {!isGameStarted &&
                 !isReplaying &&
-                process.env.NEXT_PUBLIC_ENVIRONMENT !== "production" && (
+                process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && (
                   <>
                     <button
-                      onClick={() => setDialogOpen(true)}
-                      className="inline-flex items-center justify-center rounded-xl
+                      onClick={handleCustomClick}
+                      className="hidden md:inline-flex items-center justify-center rounded-xl
                              bg-gradient-to-r from-indigo-600 to-blue-600 
                              px-4 py-2 text-sm font-semibold text-white shadow-sm 
                              hover:from-indigo-500 hover:to-blue-500
@@ -497,8 +565,8 @@ export default function Home() {
                       Custom
                     </button>
                     <button
-                      onClick={handleStartGame}
-                      className="inline-flex items-center justify-center rounded-xl
+                      onClick={handleStartClick}
+                      className="hidden md:inline-flex items-center justify-center rounded-xl
                              bg-gradient-to-r from-indigo-600 to-blue-600 
                              px-4 py-2 text-sm font-semibold text-white shadow-sm 
                              hover:from-indigo-500 hover:to-blue-500
@@ -506,7 +574,7 @@ export default function Home() {
                     >
                       Start Game
                     </button>
-                    <div className="flex items-center gap-2 rounded-xl p-2">
+                    <div className="hidden md:flex items-center gap-2 rounded-xl p-2">
                       <p className="text-sm font-bold">gpt-4o</p>
                       <Switch
                         checked={isO1}
@@ -520,7 +588,7 @@ export default function Home() {
               {process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && (
                 <button
                   onClick={replayTestGame}
-                  className="inline-flex items-center justify-center rounded-xl
+                  className="inline-flex md:hidden items-center justify-center rounded-xl
                              bg-gradient-to-r from-indigo-600 to-blue-600 
                               px-3 md:px-4 py-2 text-[10px] md:text-sm font-semibold text-white shadow-sm 
                              hover:from-indigo-500 hover:to-blue-500
@@ -595,6 +663,9 @@ export default function Home() {
           </div>
           <SpymasterView cards={gameState?.cards ?? []} />
         </div>
+        <p className="md:hidden text-center text-xs text-neutral-500">
+          Visit the website in a PC for more features.
+        </p>
 
         <div className="flex flex-col md:flex-row gap-8 justify-center">
           <div
@@ -628,6 +699,16 @@ export default function Home() {
         </div>
       </div>
       <GitHubLink />
+      <ApiKeyDialog
+        open={apiKeyDialogOpen}
+        onOpenChange={setApiKeyDialogOpen}
+        onSubmit={handleApiKeySubmit}
+      />
+      <ApiKeyDialog
+        open={settingsOpen}
+        onOpenChange={setSettingsOpen}
+        onSubmit={() => setSettingsOpen(false)}
+      />
     </main>
   );
 }
