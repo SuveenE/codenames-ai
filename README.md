@@ -2,17 +2,23 @@
 
 ### I got OpenAI o1 to play Codenames and it's super good.
 
-Will be sharing the interesting results I found on a blog post soon.
+You can get AI to play your own games at [codenames.suveenellawela.com](https://codenames.suveenellawela.com)
+
+Here's a short [blog post](https://suveenellawela.com/thoughts/codenames-ai) I published with my findings.
 
 New to Codenames? Here's a 3-minute [video](https://www.youtube.com/watch?v=WErB95Brgbs) explaining how it works.
 
-Features
+<img width="757" alt="Screenshot 2025-01-01 at 20 40 27" src="https://github.com/user-attachments/assets/a886353d-0b54-41a5-9681-9afaf5de3972" />
+
+## Features
 
 - See AI play a game with random words
 - See AI play a game with a custom set of words and a custom board (If you just finished playing a game, see how AI would have played it)
 - Replay previous games ( Currently this is suppored only for a test game )
+- Add your own API key to use OpenAI models
 
-<img width="757" alt="Screenshot 2025-01-01 at 20 40 27" src="https://github.com/user-attachments/assets/06fe1543-096c-4b0e-b434-861f05e424f8" />
+Custom Game input:
+<img width="757" alt="Screenshot 2025-01-01 at 20 40 27" src="https://github.com/user-attachments/assets/9c60b324-c29b-4608-a5ba-da0664b20564" />
 
 ## The story behind
 
