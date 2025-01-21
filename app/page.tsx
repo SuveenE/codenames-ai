@@ -15,7 +15,7 @@ import GitHubLink from "@/components/GitHubLink";
 import CustomGameDialog from "@/components/CustomGameDialog";
 import { Switch } from "@/components/ui/switch";
 import { WORD_LIST } from "@/data/wordsList";
-import testGame from "@/data/testGame7.json";
+import testGame from "@/data/testGame2.json";
 import { ClueResponse, GuessResponse } from "@/types/requests";
 import { getStoredApiKey } from "@/utils/encryption";
 import ApiKeyDialog from "@/components/ApiKeyDialog";
