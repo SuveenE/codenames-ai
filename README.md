@@ -4,7 +4,7 @@
 
 You can get AI to play your own games at [codenames.suveenellawela.com](https://codenames.suveenellawela.com)
 
-Here's a short [blog post](https://suveenellawela.com/thoughts/codenames-ai) I published with my findings.
+Here's a short [blog post](https://suveenellawela.com/thoughts/codenames-ai) I published with my findings. And the blog post got featured on Hacker News ranking #8 at its peak. There were a lot of interesting comments, have a look [here](https://news.ycombinator.com/item?id=42789670).
 
 New to Codenames? Here's a 3-minute [video](https://www.youtube.com/watch?v=WErB95Brgbs) explaining how it works.
 
