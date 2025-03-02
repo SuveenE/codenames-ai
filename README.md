@@ -1,3 +1,7 @@
+[![GitHub stars](https://img.shields.io/github/stars/SuveenE/codenames-ai?style=social)](https://github.com/SuveenE/codenames-ai/stargazers)
+![License](https://img.shields.io/github/license/SuveenE/codenames-ai)
+[![Twitter Follow](https://img.shields.io/twitter/follow/SuveenE?style=social)](https://x.com/SuveenE)
+
 # Codenames AI
 
 ### I got OpenAI o1 to play Codenames and it's super good.
